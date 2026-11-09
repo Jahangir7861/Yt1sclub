@@ -65,7 +65,7 @@ export default function HomePage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-red-600/10 blur-[140px] pointer-events-none -z-0" />
         <div className="absolute top-0 right-1/4 w-[300px] h-[250px] bg-rose-500/5 blur-[100px] pointer-events-none -z-0" />
 
-        <div className="w-[92%] md:w-[88%] max-w-4xl mx-auto relative z-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 border border-red-500/20 rounded-full px-4 py-1.5 text-xs text-red-400 mb-6 bg-red-500/[0.06] shadow-sm">
             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
@@ -73,14 +73,14 @@ export default function HomePage() {
           </div>
 
           {/* Headlines */}
-          <h1 className="font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-[40px] leading-[1.18] tracking-tight text-white mb-4 font-syne">
-            YT1s - YouTube Video Downloader <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-red-400 via-rose-300 to-red-500 bg-clip-text text-transparent">
-              Fast, Free & Unlimited MP4 & MP3
+          <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[48px] leading-[1.12] tracking-tight text-white mb-4 font-syne">
+            YT1s — YouTube Video Downloader
+            <span className="block mt-1.5 text-xl sm:text-2xl md:text-3xl font-semibold bg-gradient-to-r from-red-400 via-rose-300 to-red-500 bg-clip-text text-transparent">
+              Fast, Free & Unlimited MP4 & MP3 Downloader
             </span>
           </h1>
 
-          <p className="text-zinc-400 text-sm md:text-base max-w-2xl mx-auto mb-8 leading-relaxed font-normal">
+          <p className="text-zinc-300 text-sm sm:text-base md:text-lg max-w-3xl mx-auto mb-9 leading-relaxed font-normal">
             Convert and download YouTube videos in 1080p Full HD, 4K Ultra HD, and 320kbps MP3 audio for free. No software, no registration required, 100% safe & secure.
           </p>
 
@@ -88,7 +88,7 @@ export default function HomePage() {
           <ToolInterface tool={videoDownloader} />
 
           {/* Quick stats row */}
-          <div className="mt-14 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center max-w-3xl mx-auto">
+          <div className="mt-14 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 text-center max-w-4xl mx-auto">
             <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
               <div className="text-2xl font-extrabold text-white font-syne">150K+</div>
               <div className="text-xs text-zinc-400 uppercase tracking-wider font-semibold mt-1">Daily Downloads</div>
@@ -111,7 +111,7 @@ export default function HomePage() {
 
       {/* 2. DEDICATED TOOL ACCESS CARDS (White #ffffff) */}
       <section className="bg-white py-16 border-b border-stone-200">
-        <div className="w-[92%] md:w-[88%] mx-auto max-w-6xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-red-600 text-xs font-bold tracking-widest uppercase mb-2">Dedicated Converters</p>
             <h2 className="font-extrabold text-3xl md:text-4xl text-stone-900 font-syne">
@@ -185,7 +185,7 @@ export default function HomePage() {
 
       {/* 3. HOW IT WORKS (Cream #faf9f7) */}
       <section className="bg-[#faf9f7] py-20 border-b border-stone-200">
-        <div className="w-[92%] md:w-[88%] mx-auto max-w-6xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="text-red-600 text-xs font-bold tracking-widest uppercase mb-3">Simple 3-Step Process</p>
             <h2 className="font-extrabold text-3xl md:text-4xl text-stone-900 font-syne">
@@ -223,7 +223,7 @@ export default function HomePage() {
 
       {/* 4. WHY CHOOSE YT1S / CORE ADVANTAGES (White #ffffff) */}
       <section className="bg-white py-20 border-b border-stone-200">
-        <div className="w-[92%] md:w-[88%] mx-auto max-w-6xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="text-red-600 text-xs font-bold tracking-widest uppercase mb-3">YT1s Advantage</p>
             <h2 className="font-extrabold text-3xl md:text-4xl text-stone-900 font-syne mb-3">
@@ -369,7 +369,7 @@ export default function HomePage() {
 
       {/* 5. FEATURED GUIDES FROM CREATOR BLOG (Cream #faf9f7) */}
       <section className="bg-[#faf9f7] py-20 border-b border-stone-200">
-        <div className="w-[92%] md:w-[88%] mx-auto max-w-6xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
             <div>
               <p className="text-red-600 text-xs font-bold tracking-widest uppercase mb-2">Creator Knowledge Base</p>
@@ -438,7 +438,7 @@ export default function HomePage() {
 
       {/* 6. FAQ SECTION (White #ffffff) */}
       <section className="bg-white py-20 border-b border-stone-200">
-        <div className="w-[92%] md:w-[88%] mx-auto max-w-3xl">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-red-600 text-xs font-bold tracking-widest uppercase mb-3">FAQ</p>
             <h2 className="font-extrabold text-3xl md:text-4xl text-stone-900 font-syne mb-2">
@@ -453,7 +453,7 @@ export default function HomePage() {
 
       {/* 7. SEO EDITORIAL CONTENT BLOCK (Cream #faf9f7) */}
       <section className="bg-[#faf9f7] py-20">
-        <div className="w-[92%] md:w-[88%] mx-auto max-w-4xl">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-extrabold text-2xl md:text-3xl text-stone-900 mb-5 font-syne">
             YT1s — The Modern Standard in Free Online YouTube Downloading
           </h2>

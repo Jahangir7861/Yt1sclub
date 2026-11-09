@@ -11,7 +11,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#0e0e10] border-t border-white/5 py-14 text-white">
-      <div className="w-[92%] md:w-[88%] mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Brand Info & Author Signature */}
           <div className="space-y-4">

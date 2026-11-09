@@ -50,7 +50,7 @@ export default function ToolPageComponent({ slug }: Props) {
         {/* Ambient radial glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-red-600/10 blur-[130px] pointer-events-none -z-0" />
 
-        <div className="w-[92%] md:w-[88%] max-w-3xl mx-auto relative z-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="inline-flex items-center gap-2 border border-red-500/20 rounded-full px-3.5 py-1 text-xs text-red-400 mb-6 bg-red-500/[0.06] shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
             <span>{tool.badge === 'Pro Tool' ? t('proTool') : t('freeTool')}</span>
@@ -69,7 +69,7 @@ export default function ToolPageComponent({ slug }: Props) {
 
       {/* 2. HOW IT WORKS (Cream #faf9f7) */}
       <section className="bg-[#faf9f7] py-16 border-b border-stone-200">
-        <div className="w-[92%] md:w-[88%] mx-auto max-w-6xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-red-700 text-xs font-bold tracking-widest uppercase mb-3">{t('howItWorks')}</p>
             <h2 className="font-bold text-2xl md:text-3xl text-stone-900 font-syne">
@@ -93,7 +93,7 @@ export default function ToolPageComponent({ slug }: Props) {
 
       {/* 3. FEATURES (White #ffffff) */}
       <section className="bg-white py-16 border-b border-stone-100">
-        <div className="w-[92%] md:w-[88%] mx-auto max-w-6xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-red-700 text-xs font-bold tracking-widest uppercase mb-3">{t('features')}</p>
             <h2 className="font-bold text-2xl md:text-3xl text-stone-900 font-syne">{t('whatYouGet')}</h2>
@@ -115,7 +115,7 @@ export default function ToolPageComponent({ slug }: Props) {
 
       {/* 4. WHO IS IT FOR (Cream #faf9f7) */}
       <section className="bg-[#faf9f7] py-16 border-b border-stone-200">
-        <div className="w-[92%] md:w-[88%] mx-auto max-w-6xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-red-700 text-xs font-bold tracking-widest uppercase mb-3">{t('whoIsItFor')}</p>
             <h2 className="font-bold text-2xl md:text-3xl text-stone-900 font-syne">
@@ -136,7 +136,7 @@ export default function ToolPageComponent({ slug }: Props) {
 
       {/* 5. USE CASES (White #ffffff) */}
       <section className="bg-white py-16 border-b border-stone-100">
-        <div className="w-[92%] md:w-[88%] mx-auto max-w-6xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-red-700 text-xs font-bold tracking-widest uppercase mb-3">{t('useCases')}</p>
             <h2 className="font-bold text-2xl md:text-3xl text-stone-900 font-syne">{t('howPeopleUse')}</h2>
@@ -155,7 +155,7 @@ export default function ToolPageComponent({ slug }: Props) {
 
       {/* 6. SUPPORTED FORMATS / OPTIONS (Cream #faf9f7) */}
       <section className="bg-[#faf9f7] py-16 border-b border-stone-200">
-        <div className="w-[92%] md:w-[88%] mx-auto max-w-6xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-red-700 text-xs font-bold tracking-widest uppercase mb-3">{t('supportedFormats')}</p>
             <h2 className="font-bold text-2xl md:text-3xl text-stone-900 font-syne">
@@ -179,7 +179,7 @@ export default function ToolPageComponent({ slug }: Props) {
 
       {/* 7. FAQ SECTION (White #ffffff) */}
       <section className="bg-white py-16 border-b border-stone-100">
-        <div className="w-[92%] md:w-[88%] mx-auto max-w-2xl">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <p className="text-red-700 text-xs font-bold tracking-widest uppercase mb-3">{t('faq')}</p>
             <h2 className="font-bold text-2xl md:text-3xl text-stone-900 font-syne">
@@ -193,7 +193,7 @@ export default function ToolPageComponent({ slug }: Props) {
 
       {/* 8. RELATED TOOLS (Cream #faf9f7) */}
       <section className="bg-[#faf9f7] py-16 border-b border-stone-200">
-        <div className="w-[92%] md:w-[88%] mx-auto max-w-6xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <p className="text-red-700 text-xs font-bold tracking-widest uppercase mb-3">{t('relatedTools')}</p>
             <h2 className="font-bold text-2xl md:text-3xl text-stone-900 font-syne">

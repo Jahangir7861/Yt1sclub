@@ -226,12 +226,12 @@ export default function ToolInterface({ tool }: Props) {
   return (
     <div className="w-full">
       {/* Input Box Section with Glassmorphism */}
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <form onSubmit={handleAction} className="relative group">
           <label htmlFor="youtube-url-input" className="sr-only">
             {tool.inputPlaceholder || t('placeholder') || 'YouTube Video URL or Keywords'}
           </label>
-          <div className="flex flex-col sm:flex-row gap-2.5 p-1.5 rounded-2xl bg-white/[0.06] border border-white/20 focus-within:border-red-500/80 focus-within:ring-2 focus-within:ring-red-500/20 shadow-2xl backdrop-blur-md transition-all">
+          <div className="flex flex-col sm:flex-row gap-2.5 p-2 sm:p-2.5 rounded-2xl bg-white/[0.08] border border-white/20 focus-within:border-red-500/80 focus-within:ring-2 focus-within:ring-red-500/20 shadow-2xl backdrop-blur-md transition-all">
             <div className="flex-1 flex items-center gap-2.5 px-3.5 py-1">
               <input
                 id="youtube-url-input"
@@ -274,7 +274,7 @@ export default function ToolInterface({ tool }: Props) {
               type="submit"
               disabled={loading}
               aria-busy={loading}
-              className="shrink-0 px-7 py-3 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 disabled:opacity-60 text-white text-sm font-semibold rounded-xl shadow-lg shadow-red-500/30 transition-all flex items-center justify-center gap-2 whitespace-nowrap hover:scale-[1.01] active:scale-[0.99]"
+              className="shrink-0 px-8 py-3.5 text-sm sm:text-base font-bold bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 disabled:opacity-60 text-white text-sm font-semibold rounded-xl shadow-lg shadow-red-500/30 transition-all flex items-center justify-center gap-2 whitespace-nowrap hover:scale-[1.01] active:scale-[0.99]"
             >
               {loading ? (
                 <>
@@ -305,7 +305,7 @@ export default function ToolInterface({ tool }: Props) {
 
       {/* Results Drawer */}
       {result && (
-        <div className="mt-8 max-w-2xl mx-auto bg-gradient-to-b from-[#16161c] to-[#121217] border border-white/10 rounded-2xl p-5 md:p-6 shadow-2xl backdrop-blur-xl text-left animate-in fade-in slide-in-from-bottom-2">
+        <div className="mt-8 max-w-4xl mx-auto bg-gradient-to-b from-[#16161c] to-[#121217] border border-white/10 rounded-2xl p-5 md:p-6 shadow-2xl backdrop-blur-xl text-left animate-in fade-in slide-in-from-bottom-2">
           {/* 1. VIDEO / SHORTS / AUDIO DOWNLOAD DISPLAY */}
           {(tool.toolMode === 'video' || tool.toolMode === 'shorts' || tool.toolMode === 'audio') && (
             <div>

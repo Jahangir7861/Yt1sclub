@@ -42,7 +42,7 @@ export default function Navbar() {
 
   return (
     <nav ref={navRef} aria-label="Main Navigation" className="sticky top-0 z-50 bg-[#0e0e10]/95 backdrop-blur-xl border-b border-white/10 transition-all">
-      <div className="w-[92%] md:w-[88%] mx-auto flex items-center justify-between py-3">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-3.5">
         {/* Logo */}
         <Logo size="sm" showSubtitle={true} href="/" />
 

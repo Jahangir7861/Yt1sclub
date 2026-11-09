@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" fill="none">
+  <defs>
+    <linearGradient id="brandRedLarge" x1="0" y1="0" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF2233" />
+      <stop offset="1" stop-color="#CC0011" />
+    </linearGradient>
+  </defs>
+
+  <!-- Red Rounded Squircle Container -->
+  <rect width="180" height="180" rx="40" fill="url(#brandRedLarge)" />
+
+  <!-- Inner Soft Border -->
+  <rect x="2" y="2" width="176" height="176" rx="38" stroke="rgba(255,255,255,0.2)" stroke-width="4" />
+
+  <!-- Center White YouTube Play Triangle -->
+  <path d="M66 52L124 90L66 128V52Z" fill="#FFFFFF" />
+
+  <!-- Download Arrow Accent in Bottom-Right -->
+  <circle cx="132" cy="132" r="36" fill="#0E0E12" stroke="rgba(255,255,255,0.2)" stroke-width="4" />
+  <path d="M132 110V144M118 132L132 147L146 132" stroke="#FF2A3A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

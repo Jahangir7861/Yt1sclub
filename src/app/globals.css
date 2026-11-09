@@ -4,7 +4,8 @@
 
 @layer base {
   :root {
-    --font-syne: 'Syne', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-montserrat: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-syne: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-dm: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
@@ -15,7 +16,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4, .font-syne {
-    font-family: var(--font-syne), sans-serif;
+  h1, h2, h3, h4, .font-syne, .font-montserrat {
+    font-family: var(--font-montserrat), sans-serif;
   }
 }

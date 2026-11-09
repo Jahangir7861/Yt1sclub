@@ -17,7 +17,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        syne: ["var(--font-syne)", "sans-serif"],
+        montserrat: ["var(--font-montserrat)", "sans-serif"],
+        syne: ["var(--font-montserrat)", "sans-serif"],
         dm: ["var(--font-dm)", "sans-serif"],
       },
     },

@@ -45,7 +45,7 @@ export default function BlogIndexClient() {
           </div>
 
           <h1 className="font-bold text-3xl sm:text-4xl text-white tracking-tight mb-4 font-syne">
-            All YouTube Video Downloader <span className="text-zinc-300">Creator Journal</span>
+            YT1s <span className="text-zinc-300">Creator Journal & Guides</span>
           </h1>
           <p className="text-zinc-400 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
             Data-backed breakdowns on YouTube algorithms, high-retention script engineering, CTR thumbnail psychology, and video workflows.

@@ -201,7 +201,7 @@ export default function BlogPostPage({ params }: Props) {
           </h1>
 
           {/* Excerpt */}
-          <p className="text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+          <p className="text-zinc-400 text-base leading-relaxed mb-6 font-normal">
             {post.excerpt}
           </p>
 
@@ -292,7 +292,7 @@ export default function BlogPostPage({ params }: Props) {
                   // Blockquote
                   if (trimmed.startsWith('> ')) {
                     return (
-                      <blockquote key={idx} className="border-l-2 border-zinc-500 pl-4 py-2 my-4 bg-white/[0.02] rounded-r-lg text-zinc-300 italic text-sm">
+                      <blockquote key={idx} className="border-l-2 border-zinc-500 pl-4 py-2 my-4 bg-white/[0.02] rounded-r-lg text-zinc-300 italic text-base leading-relaxed">
                         {parseInlineMarkdown(trimmed.replace(/^>\s*/, ''))}
                       </blockquote>
                     );
@@ -304,8 +304,8 @@ export default function BlogPostPage({ params }: Props) {
                     return (
                       <ul key={idx} className="space-y-2.5 my-4 list-none pl-0">
                         {items.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2.5 text-zinc-300 text-sm">
-                            <span className="w-1.5 h-1.5 rounded-full bg-zinc-500 mt-2 shrink-0" />
+                          <li key={i} className="flex items-start gap-2.5 text-zinc-300 text-base leading-relaxed">
+                            <span className="w-1.5 h-1.5 rounded-full bg-zinc-500 mt-2.5 shrink-0" />
                             <span>{parseInlineMarkdown(item.replace(/^[-*]|\d+\.\s/, ''))}</span>
                           </li>
                         ))}
@@ -340,7 +340,7 @@ export default function BlogPostPage({ params }: Props) {
 
                   // Standard paragraph with inline formatting and link parsing
                   return (
-                    <p key={idx} className="text-zinc-300 text-sm leading-relaxed">
+                    <p key={idx} className="text-zinc-300 text-base leading-relaxed">
                       {parseInlineMarkdown(trimmed)}
                     </p>
                   );

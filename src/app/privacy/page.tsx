@@ -4,10 +4,26 @@ import Link from 'next/link';
 import { ShieldCheck, Lock, Eye, CheckCircle2, AlertCircle, Mail, ArrowLeft } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | YT1s - YT1s.club',
-  description: 'Exhaustive Privacy Policy for YT1s. Learn how we handle data, our zero-retention server model, Google AdSense DART cookie policies, GDPR & CCPA rights.',
+  title: {
+    absolute: 'Privacy Policy — Zero Log & In-Memory Streaming | YT1s',
+  },
+  description: 'Read the YT1s Privacy Policy. Learn about our zero-retention architecture, Google AdSense cookie compliance, and GDPR & CCPA privacy rights.',
   alternates: {
     canonical: 'https://yt1s.club/privacy',
+  },
+  openGraph: {
+    title: 'Privacy Policy — Zero Log & In-Memory Streaming | YT1s',
+    description: 'Read the YT1s Privacy Policy. Learn about our zero-retention architecture, Google AdSense cookie compliance, and GDPR & CCPA privacy rights.',
+    url: 'https://yt1s.club/privacy',
+    siteName: 'YT1s - yt1s.club',
+    type: 'website',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'YT1s Privacy Policy' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy — Zero Log & In-Memory Streaming | YT1s',
+    description: 'Read the YT1s Privacy Policy. Learn about our zero-retention architecture, Google AdSense cookie compliance, and GDPR & CCPA privacy rights.',
+    images: ['/opengraph-image'],
   },
 };
 

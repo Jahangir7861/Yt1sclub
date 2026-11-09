@@ -34,8 +34,8 @@ export const TOOLS_DATA: Record<string, ToolData> = {
     inputPlaceholder: 'Paste a YouTube URL or video ID (e.g. https://www.youtube.com/watch?v=...)',
     toolMode: 'video',
     meta: {
-      title: 'YouTube Video Downloader - Download 4K & 1080p HD MP4 Free Online',
-      description: 'Free online YouTube video downloader. Download any YouTube video in 4K, 1080p, 720p HD MP4 and WebM. High speed, no watermark, no software installation.',
+      title: 'YouTube Video Downloader — Fast 1080p & 4K MP4',
+      description: 'Download YouTube videos in 4K, 1080p Full HD, and 720p MP4 for free with YT1s. High-speed online video converter with zero waiting queues. Try now!',
       keywords: 'youtube video downloader, download youtube video, youtube downloader 1080p, youtube 4k downloader, save youtube video, free online youtube video downloader, download youtube mp4, youtube clip saver, yt downloader, yt1s video downloader',
     },
     steps: [
@@ -96,8 +96,8 @@ export const TOOLS_DATA: Record<string, ToolData> = {
     inputPlaceholder: 'Paste YouTube Shorts link (e.g. https://www.youtube.com/shorts/...)',
     toolMode: 'shorts',
     meta: {
-      title: 'YouTube Shorts Downloader - Save Shorts in HD 1080p MP4 Free',
-      description: 'Download YouTube Shorts online without watermark in 1080p HD MP4 format. Works on iPhone, Android, PC, and Mac with instant download speed.',
+      title: 'YouTube Shorts Downloader — No Watermark HD MP4',
+      description: 'Download vertical 1080x1920 YouTube Shorts in HD MP4 without watermarks. Free online Shorts video saver for mobile and desktop with YT1s.',
       keywords: 'youtube shorts downloader, download youtube shorts, save youtube shorts, shorts video download, youtube short to mp4, download youtube shorts 1080p, online shorts saver, yt1s shorts downloader',
     },
     steps: [
@@ -158,8 +158,8 @@ export const TOOLS_DATA: Record<string, ToolData> = {
     inputPlaceholder: 'Paste YouTube video link to convert to MP3...',
     toolMode: 'audio',
     meta: {
-      title: 'YouTube to MP3 Converter - Free High Quality Audio Downloader 320kbps',
-      description: 'Convert YouTube videos to MP3 online for free. Extract high quality audio tracks in 320kbps, 256kbps, and 128kbps. Fast, clean, and no software required.',
+      title: 'YouTube to MP3 Converter — Free 320kbps Audio',
+      description: 'Convert YouTube videos to 320kbps, 256kbps & 128kbps MP3 audio with YT1s. Studio-grade stereo sound extraction for songs and podcasts. 100% free!',
       keywords: 'youtube to mp3, youtube mp3 converter, convert youtube to mp3, youtube audio downloader, download youtube audio, youtube to mp3 320kbps, extract audio from youtube, free yt to mp3, yt1s mp3',
     },
     steps: [

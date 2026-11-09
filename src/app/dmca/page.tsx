@@ -4,10 +4,26 @@ import Link from 'next/link';
 import { ShieldAlert, Mail, ArrowLeft, CheckCircle2, AlertTriangle, FileCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'DMCA & Copyright Policy | YT1s - YT1s.club',
-  description: 'Digital Millennium Copyright Act (DMCA) Disclaimer and Safe Harbor policy for YT1s. Learn how to submit copyright notices.',
+  title: {
+    absolute: 'DMCA Copyright Disclaimer & Notice Policy | YT1s',
+  },
+  description: 'YT1s DMCA copyright policy, safe harbor compliance, and takedown notice procedures. Learn how we respect creator rights and intellectual property.',
   alternates: {
     canonical: 'https://yt1s.club/dmca',
+  },
+  openGraph: {
+    title: 'DMCA Copyright Disclaimer & Notice Policy | YT1s',
+    description: 'YT1s DMCA copyright policy, safe harbor compliance, and takedown notice procedures. Learn how we respect creator rights and intellectual property.',
+    url: 'https://yt1s.club/dmca',
+    siteName: 'YT1s - yt1s.club',
+    type: 'website',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'YT1s DMCA Policy' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'DMCA Copyright Disclaimer & Notice Policy | YT1s',
+    description: 'YT1s DMCA copyright policy, safe harbor compliance, and takedown notice procedures. Learn how we respect creator rights and intellectual property.',
+    images: ['/opengraph-image'],
   },
 };
 

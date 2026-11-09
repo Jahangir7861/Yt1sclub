@@ -4,10 +4,26 @@ import Link from 'next/link';
 import { FileText, ShieldAlert, CheckCircle2, ArrowLeft, Mail, ExternalLink } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | YT1s - YT1s.club',
-  description: 'Terms of Service and Conditions for YT1s. Understand fair use guidelines, intellectual property notices, and disclaimer of warranties.',
+  title: {
+    absolute: 'Terms of Service & User Guidelines | YT1s',
+  },
+  description: 'Review the YT1s Terms of Service, fair use guidelines, copyright disclaimers, and user terms for personal non-commercial media conversion.',
   alternates: {
     canonical: 'https://yt1s.club/terms',
+  },
+  openGraph: {
+    title: 'Terms of Service & User Guidelines | YT1s',
+    description: 'Review the YT1s Terms of Service, fair use guidelines, copyright disclaimers, and user terms for personal non-commercial media conversion.',
+    url: 'https://yt1s.club/terms',
+    siteName: 'YT1s - yt1s.club',
+    type: 'website',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'YT1s Terms of Service' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms of Service & User Guidelines | YT1s',
+    description: 'Review the YT1s Terms of Service, fair use guidelines, copyright disclaimers, and user terms for personal non-commercial media conversion.',
+    images: ['/opengraph-image'],
   },
 };
 

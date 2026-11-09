@@ -18,22 +18,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tool = TOOLS_DATA[params.slug];
   if (!tool) return {};
 
+  const fullTitle = `${tool.meta.title} | YT1s`;
+
   return {
-    title: tool.meta.title,
+    title: {
+      absolute: fullTitle,
+    },
     description: tool.meta.description,
     keywords: tool.meta.keywords,
     alternates: {
       canonical: `https://yt1s.club/${tool.slug}`,
     },
     openGraph: {
-      title: tool.meta.title,
+      title: fullTitle,
       description: tool.meta.description,
       url: `https://yt1s.club/${tool.slug}`,
       siteName: 'YT1s - yt1s.club',
       type: 'website',
       images: [
         {
-          url: '/og-image.png',
+          url: '/opengraph-image',
           width: 1200,
           height: 630,
           alt: tool.name,
@@ -42,15 +46,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: tool.meta.title,
+      title: fullTitle,
       description: tool.meta.description,
-      images: ['/og-image.png'],
+      images: ['/opengraph-image'],
     },
   };
 }
 
 export default function ToolPage({ params }: Props) {
-  if (!TOOLS_DATA[params.slug]) {
+  const tool = TOOLS_DATA[params.slug];
+
+  if (!tool) {
     notFound();
   }
 

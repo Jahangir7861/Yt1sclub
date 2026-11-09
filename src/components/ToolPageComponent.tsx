@@ -38,8 +38,31 @@ export default function ToolPageComponent({ slug }: Props) {
     },
   };
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://yt1s.club',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: tool.name,
+        item: `https://yt1s.club/${tool.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }}

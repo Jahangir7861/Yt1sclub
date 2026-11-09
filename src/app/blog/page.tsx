@@ -3,25 +3,26 @@ import { Metadata } from 'next';
 import BlogIndexClient from './BlogIndexClient';
 
 export const metadata: Metadata = {
-  title: 'YT1s Creator Journal & Video Guides | 60+ Downloader Guides',
-  description:
-    'Explore 65+ actionable YouTube guides, YT1s 4K downloading tips, 320kbps audio extraction workflows, viral Shorts strategies, and algorithm growth hacks.',
+  title: {
+    absolute: 'YT1s Creator Guides & YouTube Downloader Tips | YT1s',
+  },
+  description: 'Explore 65+ in-depth YouTube downloading tutorials, 1080p & 4K saving workflows, 320kbps MP3 extraction guides, and fair use creator strategies on YT1s.',
   alternates: {
     canonical: 'https://yt1s.club/blog',
   },
   openGraph: {
-    title: 'YT1s Creator Journal & YouTube Video Guides',
-    description:
-      'Master YouTube video downloading, 4K 60fps quality, 320kbps MP3 extraction, and high-retention video strategies with YT1s.',
+    title: 'YT1s Creator Guides & YouTube Downloader Tips | YT1s',
+    description: 'Explore 65+ in-depth YouTube downloading tutorials, 1080p & 4K saving workflows, 320kbps MP3 extraction guides, and fair use creator strategies on YT1s.',
     url: 'https://yt1s.club/blog',
     siteName: 'YT1s - yt1s.club',
     type: 'website',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'YT1s Blog' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'YT1s Creator Journal & YouTube Video Guides',
-    description:
-      'Explore actionable YouTube guides, 4K downloading tips, audio extraction workflows, and viral growth hacks.',
+    title: 'YT1s Creator Guides & YouTube Downloader Tips | YT1s',
+    description: 'Explore 65+ in-depth YouTube downloading tutorials, 1080p & 4K saving workflows, 320kbps MP3 extraction guides, and fair use creator strategies on YT1s.',
+    images: ['/opengraph-image'],
   },
 };
 

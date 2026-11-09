@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Admin Dashboard | All YouTube Video Downloader',
+  title: {
+    absolute: 'Admin Dashboard | YT1s',
+  },
   robots: {
     index: false,
     follow: false,

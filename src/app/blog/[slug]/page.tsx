@@ -70,15 +70,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = BLOG_POSTS.find((p) => p.slug === params.slug);
   if (!post) return {};
 
+  const cleanTitle = post.title.length > 50 ? `${post.title.slice(0, 47)}...` : post.title;
+  const fullTitle = `${cleanTitle} | YT1s`;
+  const cleanDesc = post.excerpt.length > 155 ? `${post.excerpt.slice(0, 152)}...` : post.excerpt;
+
   return {
-    title: `${post.title} | YT1s Guides`,
-    description: post.excerpt,
+    title: {
+      absolute: fullTitle,
+    },
+    description: cleanDesc,
     alternates: {
       canonical: `https://yt1s.club/blog/${post.slug}`,
     },
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: fullTitle,
+      description: cleanDesc,
       url: `https://yt1s.club/blog/${post.slug}`,
       siteName: 'YT1s - yt1s.club',
       type: 'article',
@@ -95,8 +101,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
+      title: fullTitle,
+      description: cleanDesc,
       images: [post.coverImage],
     },
   };
@@ -133,8 +139,37 @@ export default function BlogPostPage({ params }: Props) {
     },
   };
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://yt1s.club',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: 'https://yt1s.club/blog',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.title,
+        item: `https://yt1s.club/blog/${post.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="w-full bg-[#0e0e10] min-h-screen text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}

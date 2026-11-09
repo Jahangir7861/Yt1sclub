@@ -5,10 +5,26 @@ import { Sparkles, ShieldCheck, Zap, Globe2, Cpu, Heart, ArrowLeft, Award, Users
 import Logo from '@/components/Logo';
 
 export const metadata: Metadata = {
-  title: 'About Us | YT1s - YT1s.club',
-  description: 'Learn about YT1s (yt1s.club), our mission to create a clean, high-speed YouTube media utility, and our developer Jahangir.',
+  title: {
+    absolute: 'About YT1s — Free & Secure YouTube Media Utility | YT1s',
+  },
+  description: 'Learn about YT1s, our high-speed zero-storage in-memory streaming technology, privacy philosophy, and developer Jahangir mission to empower creators.',
   alternates: {
     canonical: 'https://yt1s.club/about',
+  },
+  openGraph: {
+    title: 'About YT1s — Free & Secure YouTube Media Utility | YT1s',
+    description: 'Learn about YT1s, our high-speed zero-storage in-memory streaming technology, privacy philosophy, and developer Jahangir mission to empower creators.',
+    url: 'https://yt1s.club/about',
+    siteName: 'YT1s - yt1s.club',
+    type: 'website',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'About YT1s' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About YT1s — Free & Secure YouTube Media Utility | YT1s',
+    description: 'Learn about YT1s, our high-speed zero-storage in-memory streaming technology, privacy philosophy, and developer Jahangir mission to empower creators.',
+    images: ['/opengraph-image'],
   },
 };
 

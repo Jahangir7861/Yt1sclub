@@ -9,11 +9,11 @@ import { LanguageProvider } from '@/context/LanguageContext';
 export const metadata: Metadata = {
   metadataBase: new URL('https://yt1s.club'),
   title: {
-    default: 'YT1s — Free YouTube Video Downloader | MP4 & MP3 Saver',
+    default: 'YT1s - Free YouTube Video Downloader',
     template: '%s | YT1s',
   },
   description:
-    'Convert and download YouTube videos in 1080p Full HD, 4K and 320kbps MP3 audio for free on YT1s.club. Instant streaming downloads with zero ads.',
+    'YT1s - The easiest way to download YouTube videos and audio for free. Fast, simple, and reliable - get your favorite content with YT1s.',
   keywords: [
     'yt1s',
     'yt1s youtube video downloader',

@@ -15,7 +15,7 @@ const CATEGORIES = [
   'Storage & Low Data Hacks',
 ];
 
-const FALLBACK_BLOG_IMAGE = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450"><rect width="800" height="450" fill="%23141418"/><rect x="20" y="20" width="760" height="410" rx="20" fill="%231a1a22" stroke="%23333340" stroke-width="2"/><circle cx="400" cy="225" r="50" fill="%23ef4444" opacity="0.9"/><polygon points="390,205 390,245 420,225" fill="white"/></svg>`;
+const FALLBACK_BLOG_IMAGE = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450"><rect width="800" height="450" fill="%23f3f4f6"/><rect x="20" y="20" width="760" height="410" rx="20" fill="%23ffffff" stroke="%23e5e7eb" stroke-width="2"/><circle cx="400" cy="225" r="50" fill="%23e91700" opacity="0.9"/><polygon points="390,205 390,245 420,225" fill="white"/></svg>`;
 
 export default function BlogIndexClient() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -33,37 +33,35 @@ export default function BlogIndexClient() {
   const featuredPost = BLOG_POSTS[0];
 
   return (
-    <div className="w-full bg-[#0e0e10] min-h-screen text-white">
+    <div className="w-full bg-white min-h-screen text-[#4a474c]">
       {/* 1. HERO SECTION */}
-      <section className="relative py-16 md:py-24 border-b border-white/5 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-red-600/10 blur-[140px] pointer-events-none -z-0" />
-        
-        <div className="w-[92%] md:w-[88%] max-w-6xl mx-auto relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 border border-white/10 rounded-full px-4 py-1.5 text-xs text-zinc-300 mb-6 bg-white/[0.03] shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-zinc-400" />
-            <span>Creator Academy & Video Guides</span>
+      <section className="relative py-14 sm:py-16 border-b border-[#dfdfdf] bg-[#fafafa]">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <div className="inline-flex items-center gap-2 border border-red-200 rounded-full px-4 py-1.5 text-xs text-[#e91700] mb-4 bg-red-50 font-semibold shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-[#e91700]" />
+            <span>YT1s Creator Academy & Video Guides</span>
           </div>
 
-          <h1 className="font-bold text-3xl sm:text-4xl text-white tracking-tight mb-4 font-syne">
-            YT1s <span className="text-zinc-300">Creator Journal & Guides</span>
+          <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl text-gray-900 tracking-tight mb-3 font-syne">
+            YT1s <span className="text-[#e91700]">Creator Journal & Guides</span>
           </h1>
-          <p className="text-zinc-400 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            Data-backed breakdowns on YouTube algorithms, high-retention script engineering, CTR thumbnail psychology, and video workflows.
+          <p className="text-[#4a474c] text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed font-normal">
+            Practical guides on video downloading, audio conversion, offline viewing workflows, and storage optimization.
           </p>
 
           {/* Search Bar */}
           <div className="max-w-xl mx-auto relative">
-            <div className="flex items-center gap-3 bg-white/[0.06] border border-white/15 focus-within:border-red-500/60 rounded-2xl px-4 py-3 shadow-xl backdrop-blur-md transition-all">
-              <Search className="w-5 h-5 text-zinc-400 shrink-0" />
+            <div className="flex items-center gap-3 bg-white border-2 border-[#ffc4c4] focus-within:border-[#e91700] rounded-xl px-4 py-3 shadow-sm transition-all">
+              <Search className="w-5 h-5 text-gray-400 shrink-0" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search articles on 4K downloads, SEO tags, thumbnails, hooks..."
-                className="w-full bg-transparent text-sm text-white placeholder:text-zinc-500 outline-none"
+                placeholder="Search articles on 4K downloads, MP3 audio, CapCut, storage..."
+                className="w-full bg-transparent text-sm text-gray-900 placeholder:text-gray-400 outline-none"
               />
               {searchQuery && (
-                <button onClick={() => setSearchQuery('')} className="text-xs text-zinc-400 hover:text-white">
+                <button onClick={() => setSearchQuery('')} className="text-xs text-gray-400 hover:text-black">
                   ✕
                 </button>
               )}
@@ -71,15 +69,15 @@ export default function BlogIndexClient() {
           </div>
 
           {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-6">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                   selectedCategory === cat
-                    ? 'bg-red-500 text-white shadow-md shadow-red-500/30'
-                    : 'bg-white/5 text-zinc-400 hover:text-white hover:bg-white/10'
+                    ? 'bg-[#e91700] text-white shadow-md shadow-red-500/25'
+                    : 'bg-white border border-gray-200 text-[#4a474c] hover:bg-gray-100'
                 }`}
               >
                 {cat}
@@ -90,73 +88,69 @@ export default function BlogIndexClient() {
       </section>
 
       {/* 2. FEATURED POST */}
-      {selectedCategory === 'All' && !searchQuery && (
-        <section className="py-12 border-b border-white/5">
-          <div className="w-[92%] md:w-[88%] max-w-6xl mx-auto">
-            <div className="flex items-center gap-2 mb-6 text-xs uppercase tracking-widest text-zinc-400 font-semibold font-syne">
-              <span className="w-2 h-2 rounded-full bg-zinc-400" />
+      {selectedCategory === 'All' && !searchQuery && featuredPost && (
+        <section className="py-12 border-b border-[#dfdfdf]">
+          <div className="max-w-5xl mx-auto px-4">
+            <div className="flex items-center gap-2 mb-6 text-xs uppercase tracking-widest text-[#e91700] font-bold font-syne">
+              <span className="w-2 h-2 rounded-full bg-[#e91700]" />
               Featured Article
             </div>
 
             <Link
               href={`/blog/${featuredPost.slug}`}
-              className="group block bg-[#141418] border border-white/10 hover:border-red-500/40 rounded-3xl overflow-hidden shadow-2xl transition-all hover:shadow-red-500/10"
+              className="group block rounded-2xl bg-white border border-[#dfdfdf] overflow-hidden hover:border-gray-300 hover:shadow-xl transition-all"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-                <div className="lg:col-span-7 relative h-72 sm:h-96 lg:h-auto overflow-hidden">
+              <div className="grid grid-cols-1 md:grid-cols-12">
+                <div className="md:col-span-7 aspect-[16/9] md:aspect-auto relative overflow-hidden bg-gray-100">
                   <img
-                    src={featuredPost.coverImage}
+                    src={featuredPost.coverImage || FALLBACK_BLOG_IMAGE}
                     alt={featuredPost.title}
-                    onError={(e) => {
-                      e.currentTarget.src = FALLBACK_BLOG_IMAGE;
-                    }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-4 left-4 bg-red-600/90 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                    {featuredPost.category}
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-[#e91700] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
+                      {featuredPost.category}
+                    </span>
                   </div>
                 </div>
 
-                <div className="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between">
+                <div className="md:col-span-5 p-6 sm:p-8 flex flex-col justify-between">
                   <div>
-                    <div className="flex items-center gap-4 text-xs text-zinc-400 mb-4">
-                      <span className="flex items-center gap-1.5">
-                        <Calendar className="w-3.5 h-3.5 text-zinc-500" />
+                    <div className="flex items-center gap-4 text-xs text-gray-500 mb-3">
+                      <span className="flex items-center gap-1">
+                        <Calendar className="w-3.5 h-3.5" />
                         {featuredPost.date}
                       </span>
                       <span>•</span>
-                      <span className="flex items-center gap-1.5">
-                        <Clock className="w-3.5 h-3.5 text-zinc-500" />
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5" />
                         {featuredPost.readTime}
                       </span>
                     </div>
 
-                    <h2 className="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-red-400 transition-colors leading-tight font-syne mb-4">
+                    <h2 className="text-xl sm:text-2xl font-bold text-gray-900 group-hover:text-[#e91700] transition-colors leading-snug mb-3 font-syne">
                       {featuredPost.title}
                     </h2>
-
-                    <p className="text-zinc-400 text-sm leading-relaxed mb-6">
+                    <p className="text-sm text-[#4a474c] leading-relaxed line-clamp-3">
                       {featuredPost.excerpt}
                     </p>
                   </div>
 
-                  <div className="flex items-center justify-between pt-6 border-t border-white/10">
-                    <div className="flex items-center gap-3">
+                  <div className="mt-6 flex items-center justify-between pt-5 border-t border-gray-100">
+                    <div className="flex items-center gap-2.5">
                       <img
                         src={featuredPost.author.avatar}
                         alt={featuredPost.author.name}
-                        className="w-10 h-10 rounded-full object-cover border border-red-500/50"
+                        className="w-8 h-8 rounded-full object-cover"
                       />
-                      <div>
-                        <div className="text-sm font-bold text-white font-syne">{featuredPost.author.name}</div>
-                        <div className="text-[11px] text-zinc-500">{featuredPost.author.role}</div>
-                      </div>
+                      <span className="text-xs font-bold text-gray-900 font-syne">
+                        {featuredPost.author.name}
+                      </span>
                     </div>
 
-                    <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-400 group-hover:translate-x-1 transition-transform">
-                      <span>Read Story</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </div>
+                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#e91700] group-hover:translate-x-1 transition-transform">
+                      Read Article <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
                   </div>
                 </div>
               </div>
@@ -165,94 +159,84 @@ export default function BlogIndexClient() {
         </section>
       )}
 
-      {/* 3. ARTICLES GRID */}
-      <section className="py-16">
-        <div className="w-[92%] md:w-[88%] max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-10">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white font-syne">
-                {selectedCategory === 'All' ? 'Latest Publications' : `${selectedCategory} Articles`}
-              </h2>
-              <p className="text-xs text-zinc-400 mt-1">
-                Showing {filteredPosts.length} comprehensive guides & breakdowns
-              </p>
-            </div>
+      {/* 3. POSTS GRID */}
+      <section className="py-12">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 font-syne">
+              {selectedCategory === 'All' ? 'All Articles' : selectedCategory}
+              <span className="text-sm font-normal text-gray-500 ml-2">
+                ({filteredPosts.length} guides)
+              </span>
+            </h2>
           </div>
 
           {filteredPosts.length === 0 ? (
-            <div className="text-center py-20 bg-white/[0.02] border border-white/5 rounded-3xl p-8">
-              <BookOpen className="w-12 h-12 text-zinc-600 mx-auto mb-4" />
-              <h3 className="text-lg font-bold text-white mb-2">No articles found</h3>
-              <p className="text-zinc-500 text-sm mb-6">
-                Try searching for different keywords or clear your active category filter.
+            <div className="text-center py-20 bg-gray-50 rounded-2xl border border-gray-200 p-8">
+              <BookOpen className="w-12 h-12 text-gray-400 mx-auto mb-3" />
+              <h3 className="text-lg font-bold text-gray-900 mb-1 font-syne">No guides found</h3>
+              <p className="text-sm text-gray-500 mb-6">
+                Try searching with different terms or selecting another category.
               </p>
               <button
                 onClick={() => {
                   setSelectedCategory('All');
                   setSearchQuery('');
                 }}
-                className="px-5 py-2.5 bg-red-500 hover:bg-red-400 text-white text-xs font-semibold rounded-xl transition-colors"
+                className="px-5 py-2 bg-[#e91700] text-white font-semibold text-xs rounded-xl shadow-md"
               >
-                Reset Filters
+                Reset Search
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {filteredPosts.map((post) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group flex flex-col bg-[#141418] border border-white/10 hover:border-red-500/40 rounded-2xl overflow-hidden shadow-lg transition-all hover:shadow-red-500/10 hover:-translate-y-1"
+                  className="group flex flex-col bg-white rounded-2xl border border-[#dfdfdf] overflow-hidden hover:border-gray-300 hover:shadow-lg transition-all"
                 >
-                  <div className="relative h-52 overflow-hidden bg-black/40">
+                  <div className="aspect-[16/9] relative overflow-hidden bg-gray-100">
                     <img
-                      src={post.coverImage}
+                      src={post.coverImage || FALLBACK_BLOG_IMAGE}
                       alt={post.title}
-                      onError={(e) => {
-                        e.currentTarget.src = FALLBACK_BLOG_IMAGE;
-                      }}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">
-                      {post.category}
+                    <div className="absolute top-3 left-3">
+                      <span className="bg-[#e91700] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-sm">
+                        {post.category}
+                      </span>
                     </div>
                   </div>
 
-                  <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div className="p-5 flex-1 flex flex-col justify-between">
                     <div>
-                      <div className="flex items-center gap-3 text-[11px] text-zinc-500 mb-3">
+                      <div className="flex items-center gap-3 text-xs text-gray-500 mb-2">
                         <span className="flex items-center gap-1">
-                          <Calendar className="w-3.5 h-3.5" />
+                          <Calendar className="w-3 h-3" />
                           {post.date}
                         </span>
                         <span>•</span>
                         <span className="flex items-center gap-1">
-                          <Clock className="w-3.5 h-3.5" />
+                          <Clock className="w-3 h-3" />
                           {post.readTime}
                         </span>
                       </div>
 
-                      <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-red-400 transition-colors leading-snug font-syne mb-3 line-clamp-2">
+                      <h3 className="font-bold text-base text-gray-900 group-hover:text-[#e91700] transition-colors leading-snug line-clamp-2 mb-2 font-syne">
                         {post.title}
                       </h3>
-
-                      <p className="text-zinc-400 text-xs leading-relaxed mb-6 line-clamp-3">
+                      <p className="text-xs sm:text-sm text-[#4a474c] leading-relaxed line-clamp-3">
                         {post.excerpt}
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-white/5">
-                      <div className="flex items-center gap-2.5">
-                        <img
-                          src={post.author.avatar}
-                          alt={post.author.name}
-                          className="w-7 h-7 rounded-full object-cover border border-red-500/40"
-                        />
-                        <span className="text-xs font-semibold text-zinc-300 font-syne">{post.author.name}</span>
-                      </div>
-
-                      <span className="text-xs text-red-400 font-medium group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                        Read →
+                    <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
+                      <span className="text-xs text-gray-600 font-medium">
+                        By {post.author.name}
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#e91700] group-hover:translate-x-1 transition-transform">
+                        Read <ArrowRight className="w-3 h-3" />
                       </span>
                     </div>
                   </div>
@@ -260,48 +244,6 @@ export default function BlogIndexClient() {
               ))}
             </div>
           )}
-        </div>
-      </section>
-
-      {/* 4. NEWSLETTER & CREATOR TOOLKIT CTA */}
-      <section className="py-20 border-t border-white/5 bg-[#141418]/60">
-        <div className="w-[92%] md:w-[88%] max-w-4xl mx-auto text-center bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/10 rounded-3xl p-10 sm:p-14 shadow-2xl relative overflow-hidden">
-          <div className="absolute -top-24 -left-24 w-60 h-60 bg-red-600/10 blur-[100px] pointer-events-none" />
-          <div className="absolute -bottom-24 -right-24 w-60 h-60 bg-rose-500/10 blur-[100px] pointer-events-none" />
-
-          <div className="relative z-10">
-            <span className="inline-block px-3 py-1 bg-white/5 border border-white/10 text-zinc-300 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
-              Stay Ahead of the Algorithm
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white font-syne mb-4">
-              Get Weekly High-Retention YouTube Blueprints
-            </h2>
-            <p className="text-zinc-400 text-sm max-w-xl mx-auto mb-8 leading-relaxed">
-              Join 150,000+ creators receiving our weekly breakdown of viral hook structures, SEO tactics, and free creator tools.
-            </p>
-
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                alert('Thank you for subscribing to All YouTube Video Downloader Creator Journal!');
-              }}
-              className="flex flex-col sm:flex-row gap-2.5 max-w-md mx-auto"
-            >
-              <input
-                type="email"
-                required
-                placeholder="Enter your creator email..."
-                className="flex-1 bg-white/5 border border-white/15 focus:border-red-500 rounded-xl px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none transition-colors"
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg shadow-red-500/30 transition-all"
-              >
-                Join Free
-              </button>
-            </form>
-            <p className="text-[11px] text-zinc-500 mt-3">Zero spam. Unsubscribe at any time with one click.</p>
-          </div>
         </div>
       </section>
     </div>

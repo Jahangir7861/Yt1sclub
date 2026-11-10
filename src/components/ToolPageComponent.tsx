@@ -68,21 +68,18 @@ export default function ToolPageComponent({ slug }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }}
       />
 
-      {/* 1. HERO SECTION (Dark obsidian #0e0e10) */}
-      <section className="bg-[#0e0e10] py-20 text-center relative overflow-hidden border-b border-white/5">
-        {/* Ambient radial glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-red-600/10 blur-[130px] pointer-events-none -z-0" />
-
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="inline-flex items-center gap-2 border border-red-500/20 rounded-full px-3.5 py-1 text-xs text-red-400 mb-6 bg-red-500/[0.06] shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
+      {/* 1. HERO SECTION (Clean White matching reference site) */}
+      <section className="bg-white py-14 text-center relative border-b border-[#dfdfdf]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="inline-flex items-center gap-2 border border-red-200 rounded-full px-3.5 py-1 text-xs text-[#e91700] mb-4 bg-red-50 shadow-sm font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#e91700]" />
             <span>{tool.badge === 'Pro Tool' ? t('proTool') : t('freeTool')}</span>
           </div>
 
-          <h1 className="font-extrabold text-3xl md:text-5xl leading-[1.08] tracking-tight text-white mb-4 font-syne">
+          <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl text-gray-900 mb-2 font-syne">
             {tool.name}
           </h1>
-          <p className="text-zinc-400 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="text-sm sm:text-base text-[#4a474c] max-w-xl mx-auto mb-8 leading-relaxed font-normal">
             {tool.tagline}
           </p>
 

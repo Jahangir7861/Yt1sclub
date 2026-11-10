@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { BLOG_POSTS } from '@/lib/blog-data';
-import { Calendar, Clock, ArrowLeft, Share2, Sparkles, CheckCircle2, Video, Download } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft, Share2, Sparkles, CheckCircle2, Video, Download, Music } from 'lucide-react';
 
 interface Props {
   params: {
@@ -15,10 +15,10 @@ function formatBoldAndCode(chunk: string, prefix: string): React.ReactNode {
   const parts = chunk.split(/(\*\*[^*]+\*\*|`[^`]+`)/g);
   return parts.map((p, i) => {
     if (p.startsWith('**') && p.endsWith('**')) {
-      return <strong key={`${prefix}-b-${i}`} className="text-white font-semibold">{p.slice(2, -2)}</strong>;
+      return <strong key={`${prefix}-b-${i}`} className="text-gray-900 font-bold">{p.slice(2, -2)}</strong>;
     }
     if (p.startsWith('`') && p.endsWith('`')) {
-      return <code key={`${prefix}-c-${i}`} className="px-1.5 py-0.5 rounded bg-white/10 text-red-300 font-mono text-xs">{p.slice(1, -1)}</code>;
+      return <code key={`${prefix}-c-${i}`} className="px-1.5 py-0.5 rounded bg-gray-100 text-[#e91700] font-mono text-xs">{p.slice(1, -1)}</code>;
     }
     return p;
   });
@@ -39,13 +39,13 @@ function parseInlineMarkdown(text: string): React.ReactNode {
     const isInternal = url.startsWith('/');
     if (isInternal) {
       elements.push(
-        <Link key={`link-${match.index}`} href={url} className="text-zinc-200 underline decoration-zinc-500 hover:text-white hover:decoration-white font-medium transition-colors">
+        <Link key={`link-${match.index}`} href={url} className="text-[#e91700] underline decoration-[#e91700]/50 hover:text-black hover:decoration-black font-semibold transition-colors">
           {label}
         </Link>
       );
     } else {
       elements.push(
-        <a key={`link-${match.index}`} href={url} target="_blank" rel="noopener noreferrer" className="text-zinc-200 underline decoration-zinc-500 hover:text-white hover:decoration-white font-medium transition-colors">
+        <a key={`link-${match.index}`} href={url} target="_blank" rel="noopener noreferrer" className="text-[#e91700] underline decoration-[#e91700]/50 hover:text-black hover:decoration-black font-semibold transition-colors">
           {label}
         </a>
       );
@@ -165,7 +165,7 @@ export default function BlogPostPage({ params }: Props) {
   };
 
   return (
-    <div className="w-full bg-[#0e0e10] min-h-screen text-white">
+    <div className="w-full bg-white min-h-screen text-[#4a474c]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -176,57 +176,55 @@ export default function BlogPostPage({ params }: Props) {
       />
 
       {/* 1. ARTICLE HEADER / HERO */}
-      <section className="relative pt-12 pb-14 border-b border-white/5 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-white/[0.02] blur-[150px] pointer-events-none -z-0" />
-
-        <div className="w-[92%] md:w-[85%] max-w-4xl mx-auto relative z-10">
+      <section className="relative pt-12 pb-14 border-b border-[#dfdfdf] bg-[#fafafa]">
+        <div className="max-w-4xl mx-auto px-4">
           {/* Breadcrumb back to blog */}
-          <div className="flex items-center gap-2 text-xs text-zinc-400 mb-6">
-            <Link href="/blog" className="hover:text-white flex items-center gap-1 transition-colors">
+          <div className="flex items-center gap-2 text-xs text-gray-500 mb-6">
+            <Link href="/blog" className="hover:text-[#e91700] flex items-center gap-1 transition-colors font-medium">
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Creator Journal</span>
             </Link>
             <span>/</span>
-            <span className="text-zinc-300 font-medium">{post.category}</span>
+            <span className="text-gray-700 font-semibold">{post.category}</span>
           </div>
 
           {/* Category Badge */}
-          <div className="inline-block px-3 py-1 bg-white/5 border border-white/10 text-zinc-300 text-xs font-medium uppercase tracking-wider rounded-full mb-4">
+          <div className="inline-block px-3 py-1 bg-red-50 border border-red-200 text-[#e91700] text-xs font-bold uppercase tracking-wider rounded-full mb-4">
             {post.category}
           </div>
 
           {/* Title */}
-          <h1 className="font-bold text-2xl sm:text-3xl text-white tracking-tight leading-snug mb-4 font-syne">
+          <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl text-gray-900 tracking-tight leading-snug mb-4 font-syne">
             {post.title}
           </h1>
 
           {/* Excerpt */}
-          <p className="text-zinc-400 text-base leading-relaxed mb-6 font-normal">
+          <p className="text-gray-600 text-base leading-relaxed mb-6 font-normal">
             {post.excerpt}
           </p>
 
           {/* Author Metadata Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-4 py-5 border-y border-white/10">
-            <div className="flex items-center gap-3.5">
+          <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-gray-200">
+            <div className="flex items-center gap-3">
               <img
                 src={post.author.avatar}
                 alt={post.author.name}
-                className="w-12 h-12 rounded-full object-cover border-2 border-red-500/60"
+                className="w-10 h-10 rounded-full object-cover border-2 border-red-500"
               />
               <div>
-                <div className="text-sm font-bold text-white font-syne">{post.author.name}</div>
-                <div className="text-xs text-zinc-400">{post.author.role}</div>
+                <div className="text-sm font-bold text-gray-900 font-syne">{post.author.name}</div>
+                <div className="text-xs text-gray-500">{post.author.role}</div>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 text-xs text-zinc-400">
+            <div className="flex items-center gap-4 text-xs text-gray-500">
               <span className="flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-zinc-500" />
+                <Calendar className="w-3.5 h-3.5 text-gray-400" />
                 {post.date}
               </span>
               <span>•</span>
               <span className="flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-zinc-500" />
+                <Clock className="w-3.5 h-3.5 text-gray-400" />
                 {post.readTime}
               </span>
             </div>
@@ -235,8 +233,8 @@ export default function BlogPostPage({ params }: Props) {
       </section>
 
       {/* 2. FEATURED COVER IMAGE */}
-      <div className="w-[92%] md:w-[85%] max-w-4xl mx-auto -mt-6 sm:-mt-8 mb-12 relative z-20">
-        <div className="rounded-3xl overflow-hidden border border-white/15 shadow-2xl aspect-[16/9] bg-black/50">
+      <div className="max-w-4xl mx-auto px-4 -mt-6 sm:-mt-8 mb-12 relative z-20">
+        <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-xl aspect-[16/9] bg-gray-100">
           <img
             src={post.coverImage}
             alt={post.title}
@@ -246,13 +244,12 @@ export default function BlogPostPage({ params }: Props) {
       </div>
 
       {/* 3. ARTICLE CONTENT + SIDEBAR CONTAINER */}
-      <section className="pb-24">
-        <div className="w-[92%] md:w-[85%] max-w-4xl mx-auto">
+      <section className="pb-24 px-4">
+        <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             {/* Main Content Body */}
-            <article className="lg:col-span-8 prose prose-invert max-w-none">
-              <div className="bg-[#141418] p-8 sm:p-10 rounded-3xl border border-white/10 text-zinc-300 text-base leading-relaxed space-y-6">
-                {/* Parse Markdown-like content into structured sections */}
+            <article className="lg:col-span-8">
+              <div className="bg-white p-6 sm:p-10 rounded-2xl border border-[#dfdfdf] shadow-sm text-gray-700 text-base leading-relaxed space-y-6">
                 {post.content.split('\n\n').map((block, idx) => {
                   const trimmed = block.trim();
                   if (!trimmed) return null;
@@ -260,7 +257,7 @@ export default function BlogPostPage({ params }: Props) {
                   // H2 Heading
                   if (trimmed.startsWith('## ')) {
                     return (
-                      <h2 key={idx} className="text-xl sm:text-2xl font-bold text-white font-syne pt-5 pb-1.5 border-b border-white/10">
+                      <h2 key={idx} className="text-xl sm:text-2xl font-bold text-gray-900 font-syne pt-5 pb-1.5 border-b border-gray-200">
                         {trimmed.replace('## ', '')}
                       </h2>
                     );
@@ -269,7 +266,7 @@ export default function BlogPostPage({ params }: Props) {
                   // H3 Heading
                   if (trimmed.startsWith('### ')) {
                     return (
-                      <h3 key={idx} className="text-lg sm:text-xl font-bold text-zinc-100 font-syne pt-3">
+                      <h3 key={idx} className="text-lg sm:text-xl font-bold text-gray-900 font-syne pt-3">
                         {trimmed.replace('### ', '')}
                       </h3>
                     );
@@ -278,7 +275,7 @@ export default function BlogPostPage({ params }: Props) {
                   // H4 Heading
                   if (trimmed.startsWith('#### ')) {
                     return (
-                      <h4 key={idx} className="text-base font-semibold text-zinc-200 font-syne pt-2">
+                      <h4 key={idx} className="text-base font-semibold text-gray-800 font-syne pt-2">
                         {trimmed.replace('#### ', '')}
                       </h4>
                     );
@@ -286,13 +283,13 @@ export default function BlogPostPage({ params }: Props) {
 
                   // Divider
                   if (trimmed === '---') {
-                    return <hr key={idx} className="border-white/10 my-6" />;
+                    return <hr key={idx} className="border-gray-200 my-6" />;
                   }
 
                   // Blockquote
                   if (trimmed.startsWith('> ')) {
                     return (
-                      <blockquote key={idx} className="border-l-2 border-zinc-500 pl-4 py-2 my-4 bg-white/[0.02] rounded-r-lg text-zinc-300 italic text-base leading-relaxed">
+                      <blockquote key={idx} className="border-l-4 border-[#e91700] pl-4 py-2 my-4 bg-red-50/50 rounded-r-lg text-gray-800 italic text-base leading-relaxed">
                         {parseInlineMarkdown(trimmed.replace(/^>\s*/, ''))}
                       </blockquote>
                     );
@@ -304,8 +301,8 @@ export default function BlogPostPage({ params }: Props) {
                     return (
                       <ul key={idx} className="space-y-2.5 my-4 list-none pl-0">
                         {items.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2.5 text-zinc-300 text-base leading-relaxed">
-                            <span className="w-1.5 h-1.5 rounded-full bg-zinc-500 mt-2.5 shrink-0" />
+                          <li key={i} className="flex items-start gap-2.5 text-gray-700 text-base leading-relaxed">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#e91700] mt-2.5 shrink-0" />
                             <span>{parseInlineMarkdown(item.replace(/^[-*]|\d+\.\s/, ''))}</span>
                           </li>
                         ))}
@@ -317,13 +314,13 @@ export default function BlogPostPage({ params }: Props) {
                   if (trimmed.includes('|')) {
                     const rows = trimmed.split('\n').filter((r) => !r.includes('---'));
                     return (
-                      <div key={idx} className="overflow-x-auto my-6 border border-white/10 rounded-xl">
+                      <div key={idx} className="overflow-x-auto my-6 border border-gray-200 rounded-xl">
                         <table className="w-full text-xs text-left">
                           <tbody>
                             {rows.map((row, rIdx) => {
                               const cells = row.split('|').filter(Boolean);
                               return (
-                                <tr key={rIdx} className={rIdx === 0 ? 'bg-white/10 font-bold text-white font-syne' : 'border-t border-white/5 text-zinc-300'}>
+                                <tr key={rIdx} className={rIdx === 0 ? 'bg-gray-100 font-bold text-gray-900 font-syne' : 'border-t border-gray-100 text-gray-700'}>
                                   {cells.map((cell, cIdx) => (
                                     <td key={cIdx} className="p-3">
                                       {parseInlineMarkdown(cell.trim())}
@@ -340,133 +337,105 @@ export default function BlogPostPage({ params }: Props) {
 
                   // Standard paragraph with inline formatting and link parsing
                   return (
-                    <p key={idx} className="text-zinc-300 text-base leading-relaxed">
+                    <p key={idx} className="text-gray-700 text-base leading-relaxed">
                       {parseInlineMarkdown(trimmed)}
                     </p>
                   );
                 })}
 
-                {/* Author Bio Signature Box */}
-                <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center gap-5 bg-white/[0.02] p-6 rounded-2xl">
+                {/* Author Bio Box */}
+                <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col sm:flex-row items-center gap-5 bg-gray-50 p-6 rounded-2xl">
                   <img
                     src={post.author.avatar}
                     alt={post.author.name}
-                    className="w-14 h-14 rounded-full object-cover border-2 border-white/20"
+                    className="w-14 h-14 rounded-full object-cover border-2 border-gray-300"
                   />
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="font-bold text-white font-syne text-base">{post.author.name}</span>
-                      <span className="text-[10px] bg-white/10 text-zinc-300 font-medium px-2.5 py-0.5 rounded-full">
-                        Author & Developer
+                      <span className="font-bold text-gray-900 font-syne text-base">{post.author.name}</span>
+                      <span className="text-[10px] bg-red-100 text-[#e91700] font-bold px-2.5 py-0.5 rounded-full">
+                        Author & Video Engineer
                       </span>
                     </div>
-                    <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
-                      Lead Architect & Video Engineer. Designed & Developed the YT1s creator ecosystem to empower creators with data-driven workflows and zero-compromise downloading speeds.
+                    <p className="text-xs text-gray-600 mt-1 leading-relaxed">
+                      Lead Architect & Video Engineer. Designed the YT1s creator platform to give users clean, fast, and reliable tools for saving YouTube media offline without bloatware.
                     </p>
                   </div>
                 </div>
               </div>
             </article>
 
-            {/* Sidebar Promo CTA */}
+            {/* Sticky Sidebar */}
             <aside className="lg:col-span-4 space-y-6">
-              {/* Sticky Tool Action Box */}
-              <div className="sticky top-24 bg-[#141418] border border-white/10 rounded-3xl p-6 shadow-xl space-y-5">
-                <div className="flex items-center gap-2 text-xs font-semibold text-zinc-400 uppercase tracking-wider font-syne">
-                  <Sparkles className="w-4 h-4 text-zinc-400" />
-                  <span>Free Creator Tools</span>
-                </div>
+              <div className="sticky top-24 space-y-6">
+                {/* Fast Tools Box */}
+                <div className="bg-white p-6 rounded-2xl border border-[#dfdfdf] shadow-sm">
+                  <div className="flex items-center gap-2 text-xs font-bold text-gray-900 uppercase tracking-wider mb-4 font-syne">
+                    <Download className="w-4 h-4 text-[#e91700]" />
+                    Fast Free Downloaders
+                  </div>
+                  <div className="space-y-2.5">
+                    <Link
+                      href="/youtube-video-downloader"
+                      className="w-full flex items-center justify-between p-3 rounded-xl bg-gray-50 hover:bg-red-50 border border-gray-200 hover:border-red-200 text-xs font-semibold text-gray-800 hover:text-[#e91700] transition-colors"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Video className="w-4 h-4 text-[#e91700]" />
+                        <span>YouTube Video (4K/HD)</span>
+                      </div>
+                      <span className="text-[10px] text-gray-400">Free</span>
+                    </Link>
 
-                <h3 className="text-lg font-bold text-white font-syne leading-snug">
-                  Download 4K Videos & Thumbnails in Seconds
-                </h3>
+                    <Link
+                      href="/youtube-to-mp3"
+                      className="w-full flex items-center justify-between p-3 rounded-xl bg-gray-50 hover:bg-red-50 border border-gray-200 hover:border-red-200 text-xs font-semibold text-gray-800 hover:text-[#e91700] transition-colors"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Music className="w-4 h-4 text-[#e91700]" />
+                        <span>YouTube to MP3</span>
+                      </div>
+                      <span className="text-[10px] text-gray-400">320k</span>
+                    </Link>
 
-                <p className="text-xs text-zinc-400 leading-relaxed">
-                  Put the strategies from this article into practice. Free, unlimited, and no registration required.
-                </p>
-
-                <div className="space-y-2 pt-2">
-                  <Link
-                    href="/youtube-video-downloader"
-                    className="w-full flex items-center justify-between p-3 rounded-xl bg-white/[0.04] hover:bg-red-500/10 border border-white/10 hover:border-red-500/40 text-xs text-zinc-200 hover:text-white transition-all group"
-                  >
-                    <div className="flex items-center gap-2">
-                      <Video className="w-4 h-4 text-red-400" />
-                      <span className="font-semibold">Video Downloader</span>
-                    </div>
-                    <span className="text-zinc-500 group-hover:text-red-400">→</span>
-                  </Link>
-
-                  <Link
-                    href="/youtube-thumbnail-downloader"
-                    className="w-full flex items-center justify-between p-3 rounded-xl bg-white/[0.04] hover:bg-red-500/10 border border-white/10 hover:border-red-500/40 text-xs text-zinc-200 hover:text-white transition-all group"
-                  >
-                    <div className="flex items-center gap-2">
-                      <Download className="w-4 h-4 text-emerald-400" />
-                      <span className="font-semibold">Thumbnail Grabber</span>
-                    </div>
-                    <span className="text-zinc-500 group-hover:text-emerald-400">→</span>
-                  </Link>
-
-                  <Link
-                    href="/youtube-script-generator"
-                    className="w-full flex items-center justify-between p-3 rounded-xl bg-white/[0.04] hover:bg-red-500/10 border border-white/10 hover:border-red-500/40 text-xs text-zinc-200 hover:text-white transition-all group"
-                  >
-                    <div className="flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-purple-400" />
-                      <span className="font-semibold">AI Script Generator</span>
-                    </div>
-                    <span className="text-zinc-500 group-hover:text-purple-400">→</span>
-                  </Link>
-                </div>
-
-                <div className="pt-4 border-t border-white/5">
-                  <div className="flex items-center gap-2 text-[11px] text-zinc-500">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Pure cloud streaming — zero server storage</span>
+                    <Link
+                      href="/youtube-shorts-downloader"
+                      className="w-full flex items-center justify-between p-3 rounded-xl bg-gray-50 hover:bg-red-50 border border-gray-200 hover:border-red-200 text-xs font-semibold text-gray-800 hover:text-[#e91700] transition-colors"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Download className="w-4 h-4 text-[#e91700]" />
+                        <span>Shorts Downloader</span>
+                      </div>
+                      <span className="text-[10px] text-gray-400">1080p</span>
+                    </Link>
                   </div>
                 </div>
+
+                {/* Related Articles Box */}
+                {relatedPosts.length > 0 && (
+                  <div className="bg-white p-6 rounded-2xl border border-[#dfdfdf] shadow-sm">
+                    <div className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-4 font-syne">
+                      Related Guides
+                    </div>
+                    <div className="space-y-4">
+                      {relatedPosts.map((rel) => (
+                        <Link
+                          key={rel.slug}
+                          href={`/blog/${rel.slug}`}
+                          className="group block"
+                        >
+                          <h4 className="text-xs font-bold text-gray-900 group-hover:text-[#e91700] transition-colors line-clamp-2 mb-1 font-syne">
+                            {rel.title}
+                          </h4>
+                          <span className="text-[10px] text-gray-400">
+                            {rel.readTime} • {rel.category}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </aside>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. RELATED ARTICLES */}
-      <section className="py-16 border-t border-white/5 bg-[#141418]/40">
-        <div className="w-[92%] md:w-[85%] max-w-4xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <h3 className="text-xl sm:text-2xl font-bold text-white font-syne">More From the Creator Journal</h3>
-            <Link href="/blog" className="text-xs text-red-400 hover:text-red-300 font-semibold transition-colors">
-              View All Posts →
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {relatedPosts.map((rel) => (
-              <Link
-                key={rel.slug}
-                href={`/blog/${rel.slug}`}
-                className="group bg-[#141418] border border-white/10 hover:border-red-500/40 rounded-2xl overflow-hidden transition-all hover:-translate-y-1"
-              >
-                <div className="h-36 overflow-hidden relative">
-                  <img
-                    src={rel.coverImage}
-                    alt={rel.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-md text-white text-[9px] font-bold px-2 py-0.5 rounded">
-                    {rel.category}
-                  </div>
-                </div>
-                <div className="p-4">
-                  <div className="text-[10px] text-zinc-500 mb-1">{rel.readTime}</div>
-                  <h4 className="text-xs font-bold text-white group-hover:text-red-400 transition-colors line-clamp-2 font-syne">
-                    {rel.title}
-                  </h4>
-                </div>
-              </Link>
-            ))}
           </div>
         </div>
       </section>

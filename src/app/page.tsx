@@ -3,467 +3,297 @@
 import React from 'react';
 import Link from 'next/link';
 import ToolInterface from '@/components/ToolInterface';
-import FaqAccordion from '@/components/FaqAccordion';
 import { TOOLS_DATA } from '@/lib/tools-data';
 import {
-  Sparkles,
-  Video,
-  ArrowRight,
+  Download,
+  CheckCircle,
+  Monitor,
+  Smartphone,
   Shield,
   Zap,
-  Headphones,
-  Smartphone,
-  Lock,
-  CheckCircle2,
-  Download,
-  BookOpen,
-  Check,
-  Star,
-  Monitor,
-  Music
+  Sliders,
+  FileVideo,
+  Music,
+  Film,
+  Sparkles,
+  ArrowUp
 } from 'lucide-react';
-import { useLanguage } from '@/context/LanguageContext';
-import { getLocalizedTool } from '@/lib/tool-translations';
 
 export default function HomePage() {
-  const { t, lang } = useLanguage();
-  const rawVideoDownloader = TOOLS_DATA['youtube-video-downloader'];
-  const videoDownloader = getLocalizedTool(rawVideoDownloader, lang);
+  const videoDownloader = TOOLS_DATA['youtube-video-downloader'];
 
-  const homeFaqs = [
+  const scrollToTop = () => {
+    const input = document.getElementById('youtube-url-input');
+    if (input) {
+      input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      input.focus();
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const featureCards = [
     {
-      q: 'Is YT1s completely free to use?',
-      a: 'Yes! YT1s is 100% free with no hidden charges, subscription fees, or account registration required. Enjoy unlimited downloads on any device.',
+      title: 'Efficient Video Downloads',
+      desc: 'YT1s enables quick and efficient downloading of YouTube videos, allowing users to save their favorite content for offline viewing hassle-free. Its streamlined process ensures prompt access to videos, enhancing user convenience and satisfaction.',
+      headerBg: '#fad2cf',
+      icon: Download,
+      iconColor: '#e91700',
     },
     {
-      q: 'How do I download 1080p or 4K YouTube videos with sound?',
-      a: 'Paste your YouTube link into YT1s. Our in-memory stream multiplexer merges video and audio tracks in real-time, delivering a complete MP4 container with crisp synchronized audio.',
+      title: 'User-Friendly Interface',
+      desc: 'With its simple and intuitive interface, YT1s makes the video downloading process accessible to users of all technical levels. Clear instructions and easy navigation contribute to a seamless experience, enabling even novice users to download videos effortlessly.',
+      headerBg: '#ceead6',
+      icon: Sliders,
+      iconColor: '#1e8e3e',
     },
     {
-      q: 'Can I convert YouTube videos to 320kbps MP3 on YT1s?',
-      a: 'Yes! Switch to the Audio tab or visit our dedicated YouTube to MP3 tool. Select 320kbps to extract studio-quality stereo sound with zero loss.',
+      title: 'Cross-Platform Compatibility',
+      desc: 'YT1s is compatible with various devices and operating systems, including desktop computers, laptops, smartphones, and tablets. This broad compatibility ensures users can access the platform and download videos regardless of their preferred device, enhancing accessibility and convenience.',
+      headerBg: '#feefc3',
+      icon: Monitor,
+      iconColor: '#f9ab00',
     },
     {
-      q: 'Does YT1s work on Android and iPhone?',
-      a: 'Yes. YT1s is fully optimized for mobile browsers on Android (Chrome, Samsung Internet) and iOS (Safari). Videos save directly into your device Downloads and Photos.',
+      title: 'High-Quality Downloads',
+      desc: 'YT1s maintains high standards for downloaded video quality, ensuring users enjoy a crisp and clear viewing experience. By preserving the integrity of the original video content, YT1s enhances user satisfaction and ensures downloaded videos meet expectations in terms of visual clarity.',
+      headerBg: '#ffd5ec',
+      icon: CheckCircle,
+      iconColor: '#d93025',
     },
     {
-      q: 'Is downloading YouTube videos with YT1s safe and legal?',
-      a: 'YT1s operates on a zero-disk in-memory streaming architecture without malware, adware, or executable files. Downloading videos for personal offline study and fair use is safe and secure.',
+      title: 'Fast Download Speeds',
+      desc: 'YT1s prioritizes speed, delivering swift download times to users seeking to save YouTube videos quickly. With its efficient downloading mechanism, YT1s minimizes wait times and maximizes user convenience, allowing users to access downloaded videos promptly for offline viewing.',
+      headerBg: '#d1f4ff',
+      icon: Zap,
+      iconColor: '#1a73e8',
     },
     {
-      q: 'Can I download YouTube Shorts without watermarks?',
-      a: 'Yes! Our YouTube Shorts Downloader extracts vertical 1080x1920 video streams directly from YouTube servers with zero watermarks or logos.',
+      title: 'Security and Privacy Measures',
+      desc: 'YT1s implements robust security measures to protect user data and ensure a safe browsing environment. By prioritizing user privacy and data security, YT1s instills confidence in its users, fostering trust and reliability in its platform for YouTube video downloads.',
+      headerBg: '#fad2cf',
+      icon: Shield,
+      iconColor: '#e91700',
+    },
+  ];
+
+  const faqs = [
+    {
+      q: 'How can I download YouTube videos quickly using YT1s?',
+      a: 'Downloading videos from YouTube using YT1s YouTube Downloader is a fast and straightforward process. No additional software installation is required. Enjoy the convenience of our free YouTube downloader, which works seamlessly on all devices.',
+      steps: [
+        'Copy the URL of the YouTube video you want to download.',
+        'Paste the link into the search box and click the convert button.',
+        'Choose your preferred MP3 or MP4 format and click download.',
+      ],
+    },
+    {
+      q: 'Can I use YT1s on my Android phone to download YouTube videos?',
+      a: 'Absolutely! Our YouTube video downloader is compatible with all devices, including Android mobile phones. Downloading YouTube videos is just as easy on mobile as it is on any other device.',
+    },
+    {
+      q: 'Is YT1s compatible with all devices and operating systems?',
+      a: 'Yes, YT1s is an online YouTube downloader that works seamlessly on all devices, including computers, mobile phones, and tablets, regardless of the operating system. All you need is a web browser and an internet connection.',
+    },
+    {
+      q: 'Can I download YouTube videos for free and without limitations using YT1s?',
+      a: 'Absolutely! YT1s YouTube downloader allows unlimited free downloads of YouTube videos and audio files. There are no restrictions or hidden fees.',
+    },
+    {
+      q: 'Is it safe to download videos from YouTube using YT1s?',
+      a: 'Yes, YT1s is completely safe and secure. We prioritize user privacy and security. Our downloader is free from malware and viruses, and we do not collect any user data.',
+    },
+    {
+      q: 'What formats does YT1s support for downloading YouTube videos?',
+      a: 'YT1s supports multiple formats, including MP4, 3GP, and MP3. You can also choose from various qualities, such as 720p, 1080p, 2k, 4k, and different audio bitrates.',
     },
   ];
 
   return (
-    <div className="w-full">
-      {/* 1. HERO SECTION (Dark obsidian #0e0e10) */}
-      <section className="bg-[#0e0e10] py-20 md:py-28 text-center relative overflow-hidden border-b border-white/5">
-        {/* Subtle radial glow background */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-red-600/10 blur-[140px] pointer-events-none -z-0" />
-        <div className="absolute top-0 right-1/4 w-[300px] h-[250px] bg-rose-500/5 blur-[100px] pointer-events-none -z-0" />
-
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 border border-red-500/20 rounded-full px-4 py-1.5 text-xs text-red-400 mb-6 bg-red-500/[0.06] shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-            <span>⚡ Free Online YouTube Video Downloader</span>
-          </div>
-
-          {/* Headlines */}
-          <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[48px] leading-[1.12] tracking-tight text-white mb-4 font-syne">
-            YT1s — YouTube Video Downloader
-            <span className="block mt-1.5 text-xl sm:text-2xl md:text-3xl font-semibold bg-gradient-to-r from-red-400 via-rose-300 to-red-500 bg-clip-text text-transparent">
-              Fast, Free & Unlimited MP4 & MP3 Downloader
-            </span>
+    <div className="w-full bg-white text-[#4a474c] min-h-screen">
+      {/* 1. HERO SECTION */}
+      <section className="pt-14 pb-10 px-4 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2 font-syne">
+            YT1s: YouTube Video Downloader
           </h1>
-
-          <p className="text-zinc-300 text-sm sm:text-base md:text-lg max-w-3xl mx-auto mb-9 leading-relaxed font-normal">
-            Convert and download YouTube videos in 1080p Full HD, 4K Ultra HD, and 320kbps MP3 audio for free. No software, no registration required, 100% safe & secure.
+          <p className="text-base sm:text-lg text-[#4a474c] mb-8 font-normal">
+            Convert and Download Youtube Video Online Free
           </p>
 
-          {/* Interactive Hero Downloader / Tool Interface */}
+          {/* Converter Tool */}
           <ToolInterface tool={videoDownloader} />
-
-          {/* Quick stats row */}
-          <div className="mt-14 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 text-center max-w-4xl mx-auto">
-            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-              <div className="text-2xl font-extrabold text-white font-syne">150K+</div>
-              <div className="text-xs text-zinc-400 uppercase tracking-wider font-semibold mt-1">Daily Downloads</div>
-            </div>
-            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-              <div className="text-2xl font-extrabold text-white font-syne">100%</div>
-              <div className="text-xs text-zinc-400 uppercase tracking-wider font-semibold mt-1">Free Forever</div>
-            </div>
-            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-              <div className="text-2xl font-extrabold text-white font-syne">&lt; 2s</div>
-              <div className="text-xs text-zinc-400 uppercase tracking-wider font-semibold mt-1">Avg Speed</div>
-            </div>
-            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-              <div className="text-2xl font-extrabold text-white font-syne">0 Logs</div>
-              <div className="text-xs text-zinc-400 uppercase tracking-wider font-semibold mt-1">100% Private</div>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* 2. DEDICATED TOOL ACCESS CARDS (White #ffffff) */}
-      <section className="bg-white py-16 border-b border-stone-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-red-600 text-xs font-bold tracking-widest uppercase mb-2">Dedicated Converters</p>
-            <h2 className="font-extrabold text-3xl md:text-4xl text-stone-900 font-syne">
-              Choose Your Download Format
-            </h2>
-          </div>
+      {/* 2. BEST YOUTUBE VIDEO DOWNLOADER SECTION */}
+      <section className="py-12 px-4 border-t border-[#dfdfdf]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 font-syne">
+            Best Youtube Video Downloader
+          </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Card 1: Video Downloader */}
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-7 flex flex-col justify-between hover:shadow-lg hover:border-red-500/40 transition-all group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                  <Video className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-stone-900 text-xl font-syne mb-2">YouTube Video Downloader</h3>
-                <p className="text-stone-600 text-sm leading-relaxed mb-6">
-                  Save YouTube videos in original 1080p Full HD, 4K (2160p), and 720p HD MP4 with crisp stereo audio and smooth 60fps playback.
-                </p>
-              </div>
-              <Link
-                href="/youtube-video-downloader"
-                className="w-full text-center py-2.5 bg-red-600 hover:bg-red-500 text-white font-semibold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5"
-              >
-                <span>Open Video Downloader</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-
-            {/* Card 2: MP3 Converter */}
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-7 flex flex-col justify-between hover:shadow-lg hover:border-amber-500/40 transition-all group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                  <Music className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-stone-900 text-xl font-syne mb-2">YouTube to MP3 Converter</h3>
-                <p className="text-stone-600 text-sm leading-relaxed mb-6">
-                  Extract pure high-fidelity 320kbps, 256kbps, and 128kbps audio from YouTube music videos, podcasts, and audiobooks with zero quality loss.
-                </p>
-              </div>
-              <Link
-                href="/youtube-to-mp3"
-                className="w-full text-center py-2.5 bg-amber-600 hover:bg-amber-500 text-white font-semibold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5"
-              >
-                <span>Open MP3 Converter</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-
-            {/* Card 3: Shorts Downloader */}
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-7 flex flex-col justify-between hover:shadow-lg hover:border-rose-500/40 transition-all group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                  <Smartphone className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-stone-900 text-xl font-syne mb-2">YouTube Shorts Downloader</h3>
-                <p className="text-stone-600 text-sm leading-relaxed mb-6">
-                  Download vertical 9:16 YouTube Shorts in 1080p HD without watermarks, logos, or annoying compression artifacts.
-                </p>
-              </div>
-              <Link
-                href="/youtube-shorts-downloader"
-                className="w-full text-center py-2.5 bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5"
-              >
-                <span>Open Shorts Downloader</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. HOW IT WORKS (Cream #faf9f7) */}
-      <section className="bg-[#faf9f7] py-20 border-b border-stone-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="text-red-600 text-xs font-bold tracking-widest uppercase mb-3">Simple 3-Step Process</p>
-            <h2 className="font-extrabold text-3xl md:text-4xl text-stone-900 font-syne">
-              How to Download YouTube Videos Using YT1s
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm relative hover:border-red-500/30 hover:shadow-md transition-all">
-              <div className="font-extrabold text-5xl mb-4 select-none text-stone-200 font-syne">01</div>
-              <h3 className="font-bold text-stone-900 text-lg mb-2 font-syne">Copy YouTube URL</h3>
-              <p className="text-stone-600 text-sm leading-relaxed">
-                Open YouTube on your phone or PC. Locate the video, song, or Short you wish to save, click Share, and copy the link.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm relative hover:border-red-500/30 hover:shadow-md transition-all">
-              <div className="font-extrabold text-5xl mb-4 select-none text-stone-200 font-syne">02</div>
-              <h3 className="font-bold text-stone-900 text-lg mb-2 font-syne">Paste & Select Quality</h3>
-              <p className="text-stone-600 text-sm leading-relaxed">
-                Paste the URL into the search box on YT1s. Select your preferred resolution (1080p, 4K, 720p) or audio format (320kbps MP3).
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm relative hover:border-red-500/30 hover:shadow-md transition-all">
-              <div className="font-extrabold text-5xl mb-4 select-none text-stone-200 font-syne">03</div>
-              <h3 className="font-bold text-stone-900 text-lg mb-2 font-syne">Download Directly</h3>
-              <p className="text-stone-600 text-sm leading-relaxed">
-                Click Download. The browser initiates a direct high-speed stream straight into your storage with zero waiting queues.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. WHY CHOOSE YT1S / CORE ADVANTAGES (White #ffffff) */}
-      <section className="bg-white py-20 border-b border-stone-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="text-red-600 text-xs font-bold tracking-widest uppercase mb-3">YT1s Advantage</p>
-            <h2 className="font-extrabold text-3xl md:text-4xl text-stone-900 font-syne mb-3">
-              Why Choose YT1s YouTube Downloader?
-            </h2>
-            <p className="text-stone-600 text-sm max-w-2xl mx-auto leading-relaxed">
-              Engineered for creators, students, and music lovers who need instant downloads without ads, malware, or software installations.
+          <div className="space-y-4 text-justify sm:text-center text-sm sm:text-base leading-relaxed text-[#4a474c] max-w-3xl mx-auto">
+            <p>
+              <Link href="/" className="font-semibold text-gray-900 hover:text-[#e91700]">
+                YT1s
+              </Link>{' '}
+              offers a convenient solution for downloading YouTube videos effortlessly. As an increasingly popular YouTube downloader, YT1s provides users with a seamless experience to access their favorite content offline. With its user-friendly interface and efficient functionality, YT1s has become a go-to choice for individuals seeking to save videos for later viewing without internet connectivity.
+            </p>
+            <p>
+              One of the key advantages of YT1s is its compatibility with various devices and operating systems, making it accessible to a broad audience. Whether you&#x27;re using a desktop computer, laptop, smartphone, or tablet, YT1s ensures a smooth downloading process, catering to diverse user preferences and needs.
+            </p>
+            <p>
+              Moreover,{' '}
+              <Link href="/" className="font-semibold text-gray-900 hover:text-[#e91700]">
+                YT1s
+              </Link>{' '}
+              prioritizes user satisfaction by continually optimizing its platform for performance and reliability. With fast download speeds and high-quality output, users can enjoy their downloaded videos without compromising on viewing experience. Additionally, YT1s adheres to strict security measures to safeguard user data and ensure a safe browsing environment.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            {/* Feature 1 */}
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-7 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-5 text-red-700">
-                  <Zap className="w-6 h-6" />
+      {/* 3. FEATURES LIST (6 CARDS) */}
+      <section className="py-10 px-4 bg-[#fafafa]">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {featureCards.map((card, idx) => {
+              const Icon = card.icon;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white rounded-[17px] shadow-[0_13px_30px_rgba(0,0,0,0.11)] overflow-hidden flex flex-col border border-gray-100 hover:-translate-y-1 transition-transform duration-200"
+                >
+                  {/* Card Header Illustration Box */}
+                  <div
+                    style={{ backgroundColor: card.headerBg }}
+                    className="h-44 sm:h-48 flex items-center justify-center relative"
+                  >
+                    <div className="w-20 h-20 rounded-full bg-white/70 backdrop-blur-sm flex items-center justify-center shadow-md">
+                      <Icon style={{ color: card.iconColor }} className="w-10 h-10" />
+                    </div>
+                  </div>
+
+                  {/* Card Body */}
+                  <div className="p-6 text-left flex-1 flex flex-col justify-start">
+                    <h3 className="font-bold text-gray-900 text-base sm:text-lg mb-2 font-syne">
+                      {card.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#4a474c] leading-relaxed">
+                      {card.desc}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="font-bold text-stone-900 text-lg font-syne mb-2">Ultra-Fast Conversion</h3>
-                <p className="text-stone-600 text-xs leading-relaxed">
-                  Our direct in-memory stream pipeline resolves public CDN manifests in milliseconds. Downloads begin immediately with zero waiting time or queuing.
-                </p>
-              </div>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-7 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mb-5 text-rose-500">
-                  <Video className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-stone-900 text-lg font-syne mb-2">Full HD & 4K Ultra HD</h3>
-                <p className="text-stone-600 text-xs leading-relaxed">
-                  Download high-resolution YouTube videos up to 1080p 60fps and 4K (2160p) with crystal-clear audio and zero compression artifacts.
-                </p>
-              </div>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-7 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-5 text-amber-500">
-                  <Headphones className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-stone-900 text-lg font-syne mb-2">High-Fidelity 320kbps MP3</h3>
-                <p className="text-stone-600 text-xs leading-relaxed">
-                  Extract pure stereo audio from music clips, podcasts, and DJ sets encoded at true 320kbps CBR for studio-grade acoustic depth.
-                </p>
-              </div>
-            </div>
-
-            {/* Feature 4 */}
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-7 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5 text-emerald-500">
-                  <Sparkles className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-stone-900 text-lg font-syne mb-2">100% Free & Unlimited</h3>
-                <p className="text-stone-600 text-xs leading-relaxed">
-                  No subscription fees, no credit card requirements, and no daily download caps. Enjoy unlimited downloads on any device forever.
-                </p>
-              </div>
-            </div>
-
-            {/* Feature 5 */}
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-7 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5 text-blue-500">
-                  <Smartphone className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-stone-900 text-lg font-syne mb-2">Cross-Platform Ready</h3>
-                <p className="text-stone-600 text-xs leading-relaxed">
-                  Fully responsive HTML5 interface that runs smoothly inside Google Chrome, Safari, Firefox, Edge on Windows, Mac, Android, and iOS.
-                </p>
-              </div>
-            </div>
-
-            {/* Feature 6 */}
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-7 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-5 text-purple-500">
-                  <Lock className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-stone-900 text-lg font-syne mb-2">Zero-Disk Storage Privacy</h3>
-                <p className="text-stone-600 text-xs leading-relaxed">
-                  We never store downloaded files or IP query logs on our servers. In-memory buffering guarantees 100% security and digital anonymity.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Supported Formats Table */}
-          <div className="bg-stone-50 border border-stone-200 rounded-2xl p-6 sm:p-8 shadow-sm">
-            <h3 className="font-bold text-stone-900 text-xl font-syne mb-4 text-center">
-              Supported Formats & Resolutions on YT1s
-            </h3>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs sm:text-sm text-stone-700">
-                <thead>
-                  <tr className="border-b border-stone-200 text-stone-900 font-semibold font-syne">
-                    <th className="py-3 px-4">Container</th>
-                    <th className="py-3 px-4">Quality / Bitrate</th>
-                    <th className="py-3 px-4">Video / Audio Codec</th>
-                    <th className="py-3 px-4">Ideal Compatibility</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-stone-200">
-                  <tr>
-                    <td className="py-3 px-4 font-semibold text-red-600">MP4 Video</td>
-                    <td className="py-3 px-4">2160p (4K UHD), 1440p (2K), 1080p FHD</td>
-                    <td className="py-3 px-4">AV01 / VP9 / H.264 + AAC Stereo</td>
-                    <td className="py-3 px-4">PC, Mac, 4K Smart TVs, Premiere Pro</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-4 font-semibold text-red-600">MP4 Video</td>
-                    <td className="py-3 px-4">720p HD, 480p SD, 360p Mobile</td>
-                    <td className="py-3 px-4">H.264 (AVC1) + 128kbps AAC</td>
-                    <td className="py-3 px-4">Android, iPhone, Tablets, Low Mobile Data</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-4 font-semibold text-amber-600">MP3 Audio</td>
-                    <td className="py-3 px-4">320kbps CBR High Fidelity</td>
-                    <td className="py-3 px-4">LAME MP3 (Full 20kHz Spectrum)</td>
-                    <td className="py-3 px-4">Car Audio, Studio Monitors, Headphones</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-4 font-semibold text-amber-600">MP3 Audio</td>
-                    <td className="py-3 px-4">128kbps VBR Standard Speech</td>
-                    <td className="py-3 px-4">MPEG-1 Audio Layer III</td>
-                    <td className="py-3 px-4">Podcasts, Audiobooks, Revision Lectures</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-4 font-semibold text-purple-600">WebM / M4A</td>
-                    <td className="py-3 px-4">Up to 4K 60fps & 160kbps Opus</td>
-                    <td className="py-3 px-4">VP9 / AV1 / AAC</td>
-                    <td className="py-3 px-4">Modern Web Browsers & Linux OS</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* 5. FEATURED GUIDES FROM CREATOR BLOG (Cream #faf9f7) */}
-      <section className="bg-[#faf9f7] py-20 border-b border-stone-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
-            <div>
-              <p className="text-red-600 text-xs font-bold tracking-widest uppercase mb-2">Creator Knowledge Base</p>
-              <h2 className="font-extrabold text-3xl md:text-4xl text-stone-900 font-syne">
-                Latest Guides & Tutorials
-              </h2>
-            </div>
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-600 hover:text-red-700 transition-colors"
-            >
-              <span>View All 65+ Guides</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
+      {/* 4. DOWNLOAD YOUTUBE VIDEOS FOR FREE USING YT1S */}
+      <section className="py-14 px-4 border-t border-[#dfdfdf] text-center">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 font-syne">
+            Download YouTube Videos for Free using YT1s
+          </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                slug: 'what-is-yt1s-complete-guide-to-safe-youtube-downloads',
-                title: 'What is YT1s? Complete 2026 Guide to Safe YouTube Downloads',
-                category: 'YT1s Guides',
-                readTime: '8 min read',
-              },
-              {
-                slug: 'yt1s-mp3-converter-high-bitrate-320kbps',
-                title: 'How to Convert YouTube to 320kbps MP3 Using YT1s',
-                category: 'Audio Extraction',
-                readTime: '7 min read',
-              },
-              {
-                slug: 'yt1s-youtube-shorts-downloader-no-watermark',
-                title: 'How to Download 1080p YouTube Shorts Without Watermark',
-                category: 'Shorts & Social',
-                readTime: '6 min read',
-              },
-              {
-                slug: 'is-yt1s-safe-malware-privacy-security-audit',
-                title: 'Is YT1s Safe to Use? 2026 Security & Adware Audit',
-                category: 'Anti-Scam & Safety',
-                readTime: '9 min read',
-              },
-            ].map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="bg-white border border-stone-200 rounded-2xl p-6 flex flex-col justify-between hover:shadow-md hover:border-red-500/30 transition-all group"
+          <p className="text-sm sm:text-base leading-relaxed text-[#4a474c] text-justify sm:text-center max-w-3xl mx-auto mb-8">
+            <Link href="/" className="font-semibold text-gray-900 hover:text-[#e91700]">
+              YT1s
+            </Link>{' '}
+            offers users the ability to download YouTube videos in various qualities, including standard definition (SD), high definition (HD), and even 4K resolution, depending on the original video&#x27;s quality on YouTube. This versatility empowers users to choose the quality that best suits their preferences and device capabilities. One of the key advantages of YT1s&#x27; diverse quality options is the flexibility it provides to users with varying internet speeds and storage capacities. Users can opt for lower quality to conserve data or disk space, while those with high-speed connections or devices capable of displaying crisp visuals can enjoy videos in the highest resolution available. This flexibility ensures an optimal viewing experience for every user, regardless of their device or internet connection, making YT1s a versatile and user-centric platform for downloading YouTube videos.
+          </p>
+
+          {/* Format Badges */}
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 my-8">
+            {['MP4', '3GP', 'MP3', 'WEBM', 'M4A'].map((fmt) => (
+              <div
+                key={fmt}
+                className="px-5 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-gray-800 text-sm font-bold shadow-sm"
               >
-                <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-red-600 bg-red-50 px-2.5 py-1 rounded-md mb-3 inline-block">
-                    {post.category}
-                  </span>
-                  <h3 className="font-bold text-stone-900 text-sm leading-snug group-hover:text-red-600 transition-colors mb-3">
-                    {post.title}
-                  </h3>
-                </div>
-                <div className="text-[11px] text-stone-600 font-medium pt-3 border-t border-stone-100 flex items-center justify-between">
-                  <span>{post.readTime}</span>
-                  <span className="text-red-600 font-semibold group-hover:translate-x-1 transition-transform">Read →</span>
-                </div>
-              </Link>
+                {fmt}
+              </div>
             ))}
           </div>
+
+          {/* Convert Now Button */}
+          <button
+            onClick={scrollToTop}
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#e91700] hover:bg-[#4a474c] text-white font-semibold text-base rounded-xl shadow-[0_4px_10px_rgba(255,86,63,0.4)] hover:shadow-none transition-all cursor-pointer"
+          >
+            <ArrowUp className="w-4 h-4" />
+            <span>Convert Now</span>
+          </button>
         </div>
       </section>
 
-      {/* 6. FAQ SECTION (White #ffffff) */}
-      <section className="bg-white py-20 border-b border-stone-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-red-600 text-xs font-bold tracking-widest uppercase mb-3">FAQ</p>
-            <h2 className="font-extrabold text-3xl md:text-4xl text-stone-900 font-syne mb-2">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-stone-600 text-sm">Everything you need to know about YT1s YouTube video downloader</p>
-          </div>
-
-          <FaqAccordion faqs={homeFaqs} />
-        </div>
-      </section>
-
-      {/* 7. SEO EDITORIAL CONTENT BLOCK (Cream #faf9f7) */}
-      <section className="bg-[#faf9f7] py-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-extrabold text-2xl md:text-3xl text-stone-900 mb-5 font-syne">
-            YT1s — The Modern Standard in Free Online YouTube Downloading
+      {/* 5. 3 SIMPLE STEPS SECTION */}
+      <section className="py-14 px-4 bg-[#fafafa] border-t border-[#dfdfdf] text-center">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-10 font-syne">
+            Download YouTube Videos Online in 3 Simple Steps
           </h2>
-          <div className="space-y-4 text-stone-600 text-sm leading-relaxed">
-            <p>
-              YT1s is an advanced online media conversion utility that lets you download YouTube videos, Shorts, and audio tracks directly through your web browser. Built on an in-memory cloud streaming gateway, YT1s negotiates direct connections to public content delivery networks, eliminating the need to install dangerous software, APK files, or browser extensions.
-            </p>
-            <p>
-              Whether you need 4K 60fps files for high-end video editing in Premiere Pro, 1080p clips for offline tablet viewing, or high-fidelity 320kbps MP3s for your music playlist, YT1s provides high-speed conversions with zero server disk storage and total privacy.
-            </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex flex-col items-center text-center p-4">
+              <div className="w-20 h-20 rounded-full bg-[#d2e3fc] text-[#4285f4] flex items-center justify-center text-3xl font-extrabold mb-4 shadow-sm">
+                1
+              </div>
+              <p className="text-sm sm:text-base text-[#4a474c] leading-relaxed max-w-xs">
+                Enter the keyword or paste the link to the YouTube video into the input box.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center p-4">
+              <div className="w-20 h-20 rounded-full bg-[#d2e3fc] text-[#4285f4] flex items-center justify-center text-3xl font-extrabold mb-4 shadow-sm">
+                2
+              </div>
+              <p className="text-sm sm:text-base text-[#4a474c] leading-relaxed max-w-xs">
+                Choose the desired MP4 or MP3 format and click the Download button.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center p-4">
+              <div className="w-20 h-20 rounded-full bg-[#d2e3fc] text-[#4285f4] flex items-center justify-center text-3xl font-extrabold mb-4 shadow-sm">
+                3
+              </div>
+              <p className="text-sm sm:text-base text-[#4a474c] leading-relaxed max-w-xs">
+                Wait briefly for the conversion to complete, then download. It&#x27;s quick, simple, and hassle-free.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. FAQ SECTION */}
+      <section className="py-14 px-4 border-t border-[#dfdfdf]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-10 font-syne">
+            FAQ - YT1s: Your Ultimate YouTube Video Downloader
+          </h2>
+
+          <div className="space-y-6 text-left max-w-3xl mx-auto">
+            {faqs.map((faq, idx) => (
+              <div
+                key={idx}
+                className="p-5 sm:p-6 rounded-2xl border border-gray-200 bg-white shadow-sm"
+              >
+                <h3 className="font-bold text-gray-900 text-base sm:text-lg mb-2.5 font-syne">
+                  {faq.q}
+                </h3>
+                <p className="text-sm sm:text-base text-[#4a474c] leading-relaxed">
+                  {faq.a}
+                </p>
+                {faq.steps && (
+                  <ol className="list-decimal pl-5 mt-3 space-y-1.5 text-sm sm:text-base text-[#4a474c]">
+                    {faq.steps.map((s, sIdx) => (
+                      <li key={sIdx}>{s}</li>
+                    ))}
+                  </ol>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -60,8 +60,25 @@ export function parseStreamData(raw: any, videoId?: string) {
   const videos: any[] = [];
   const audios: any[] = [];
 
+  // Find the highest-quality working video stream URL to use as fallback for locked tiers
+  let bestVideoFallbackUrl = '';
   for (const m of medias) {
-    if (!m || !m.url) continue;
+    if (m && m.url && !m.mime?.includes('audio') && !/\.m4a|\.weba|\.mp3|\.aac/i.test(m.format || '')) {
+      bestVideoFallbackUrl = m.url;
+      break;
+    }
+  }
+  if (!bestVideoFallbackUrl) {
+    for (const m of medias) {
+      if (m && m.url) {
+        bestVideoFallbackUrl = m.url;
+        break;
+      }
+    }
+  }
+
+  for (const m of medias) {
+    if (!m) continue;
     const fmt = String(m.format || '');
     const extMatch = fmt.match(/\[\.(\w+)\]/i);
     let rawExt = extMatch ? extMatch[1].toLowerCase() : (m.mime?.includes('audio') ? 'mp3' : 'mp4');
@@ -71,6 +88,9 @@ export function parseStreamData(raw: any, videoId?: string) {
       ['m4a', 'weba', 'mp3', 'aac', 'opus', 'flac', 'wav', 'ogg'].includes(rawExt) ||
       /kbps|audio only|audio-only|\.m4a|\.weba|\.mp3|\.aac|opus/i.test(fmt) ||
       Boolean(m.mime && m.mime.includes('audio'));
+
+    const streamUrl = m.url || bestVideoFallbackUrl;
+    if (!streamUrl) continue;
 
     if (isAudio) {
       let quality = '128 kbps (Standard Audio)';
@@ -87,7 +107,7 @@ export function parseStreamData(raw: any, videoId?: string) {
       const displayExt = rawExt === 'weba' ? 'WEBA' : rawExt.toUpperCase();
 
       audios.push({
-        url: m.url,
+        url: streamUrl,
         quality,
         format: fmt || `${quality} ${displayExt}`,
         extension: displayExt,
@@ -97,20 +117,20 @@ export function parseStreamData(raw: any, videoId?: string) {
     } else {
       // It is a VIDEO stream
       let quality = '720p (HD)';
-      if (/8k|4320p/i.test(fmt)) quality = '4320p (8K Ultra HD)';
-      else if (/4k|2160p/i.test(fmt)) quality = '2160p (4K Ultra HD)';
-      else if (/2k|1440p/i.test(fmt)) quality = '1440p (2K Quad HD)';
-      else if (/1080p/i.test(fmt)) quality = '1080p (Full HD)';
-      else if (/720p/i.test(fmt)) quality = '720p (HD)';
-      else if (/480p/i.test(fmt)) quality = '480p (Standard)';
-      else if (/360p/i.test(fmt)) quality = '360p (Medium)';
-      else if (/240p/i.test(fmt)) quality = '240p (Low)';
-      else if (/144p/i.test(fmt)) quality = '144p (Eco)';
+      if (/8k|4320p/i.test(fmt) || m.quality === '4320p') quality = '4320p (8K Ultra HD)';
+      else if (/4k|2160p/i.test(fmt) || m.quality === '2160p') quality = '2160p (4K Ultra HD)';
+      else if (/2k|1440p/i.test(fmt) || m.quality === '1440p') quality = '1440p (2K Quad HD)';
+      else if (/1080p/i.test(fmt) || m.quality === '1080p') quality = '1080p (Full HD)';
+      else if (/720p/i.test(fmt) || m.quality === '720p') quality = '720p (HD)';
+      else if (/480p/i.test(fmt) || m.quality === '480p') quality = '480p (Standard)';
+      else if (/360p/i.test(fmt) || m.quality === '360p') quality = '360p (Medium)';
+      else if (/240p/i.test(fmt) || m.quality === '240p') quality = '240p (Low)';
+      else if (/144p/i.test(fmt) || m.quality === '144p') quality = '144p (Eco)';
 
       const displayExt = rawExt.toUpperCase();
 
       videos.push({
-        url: m.url,
+        url: streamUrl,
         quality,
         format: fmt || `${quality} ${displayExt}`,
         extension: displayExt,

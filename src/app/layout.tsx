@@ -151,10 +151,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Google tag (gtag.js) */}
+        {/* Google Tag Manager (GTM-KLFFQNG5) */}
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-N96YKLMYQY"
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-KLFFQNG5"
         />
         <script
           dangerouslySetInnerHTML={{
@@ -162,7 +162,6 @@ export default function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-N96YKLMYQY');
             `,
           }}
         />
@@ -175,6 +174,15 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col bg-[#faf9f7] text-stone-900 antialiased font-dm">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KLFFQNG5"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <LanguageProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
